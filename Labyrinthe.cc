@@ -3,8 +3,8 @@
 #include "Gardien.h"
 
 Sound*	Chasseur::_hunter_fire;	// bruit de l'arme du chasseur.
-Sound*	Chasseur::_hunter_hit;	// cri du chasseur touché.
-Sound*	Chasseur::_wall_hit;	// on a tapé un mur.
+Sound*	Chasseur::_hunter_hit;	// cri du chasseur touchÃ©.
+Sound*	Chasseur::_wall_hit;	// on a tapÃ© un mur.
 
 Environnement* Environnement::init (char* filename)
 {
@@ -22,9 +22,10 @@ Labyrinthe::Labyrinthe (char* filename)
 		{ 0, LAB_HEIGHT-1, 0, 0, 0 },
 	};
 	// une affiche.
-	//  (attention: pour des raisons de rapport d'aspect, les affiches doivent faire 2 de long)
+	//  (attention: pour des raisons de rapport d'aspect,
+	// les affiches doivent faire 2 de long)
 	static Wall affiche [] = {
-		{ 4, 0, 6, 0, 0 },		// première affiche.
+		{ 4, 0, 6, 0, 0 },		// premiÃ©re affiche.
 		{ 8, 0, 10, 0, 0 },		// autre affiche.
 	};
 	// 3 caisses.
@@ -42,7 +43,7 @@ Labyrinthe::Labyrinthe (char* filename)
 	};
 /* FIN - NOUVEAU */
 
-	// juste un mur autour et les 3 caisses et le trésor dedans.
+	// juste un mur autour et les 3 caisses et le trÃ©sor dedans.
 	for (int i = 0; i < LAB_WIDTH; ++i)
 		for (int j = 0; j < LAB_HEIGHT; ++j) {
 			if (i == 0 || i == LAB_WIDTH-1 || j == 0 || j == LAB_HEIGHT-1)
@@ -60,16 +61,16 @@ Labyrinthe::Labyrinthe (char* filename)
 	// deux affiches.
 	_npicts = 2;
 	_picts = affiche;
-	// la deuxième à une texture différente.
+	// la deuxiÃ©me a une texture diffÃ©rente.
 	char	tmp [128];
-	sprintf (tmp, "%s/%s", texture_dir, "voiture.jpg");
+	sprintf (tmp, "%s/%s", texture_dir, "affiche 2_b.jpg");
 	_picts [1]._ntex = wall_texture (tmp);
 	// 3 caisses.
 	_nboxes = 3;
 	_boxes = caisses;
 
 /* DEB - NOUVEAU */
-	// mettre une autre texture à la deuxième caisse.
+	// mettre une autre texture Ã  la deuxiÃ©me caisse.
 	sprintf (tmp, "%s/%s", texture_dir, "boite.jpg");
 	caisses [1]._ntex = wall_texture (tmp);
 
@@ -82,10 +83,11 @@ Labyrinthe::Labyrinthe (char* filename)
 	_marks = marques;
 /* FIN - NOUVEAU */
 
-	// le trésor.
+	// le trÃ©sor.
 	_treasor._x = 10;
 	_treasor._y = 10;
-	_data [_treasor._x][_treasor._y] = 1;	// indiquer qu'on ne marche pas sur le trésor.
+	_data [_treasor._x][_treasor._y] = 1;	
+	// indiquer qu'on ne marche pas sur le trÃ©sor.
 	// le chasseur et les 4 gardiens.
 	_nguards = 5;
 	_guards = new Mover* [_nguards];
