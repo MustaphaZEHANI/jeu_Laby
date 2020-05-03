@@ -16,10 +16,10 @@ Labyrinthe::Labyrinthe (char* filename)
 {
 	// les 4 murs.
 	static Wall walls [] = {
-		{ 0, 0, LAB_WIDTH-1, 0, 0 },
-		{ LAB_WIDTH-1, 0, LAB_WIDTH-1, LAB_HEIGHT-1, 0 },
-		{ LAB_WIDTH-1, LAB_HEIGHT-1, 0, LAB_HEIGHT-1, 0 },
-		{ 0, LAB_HEIGHT-1, 0, 0, 0 },
+		{ 0, 0, LAB_WIDTH-1, 0, 0 },//wall horizentale el fou9
+		{ LAB_WIDTH-1, 0, LAB_WIDTH-1, LAB_HEIGHT-1, 0 },//wall vertical 3al limin
+		{ LAB_WIDTH-1, LAB_HEIGHT-1, 0, LAB_HEIGHT-1, 0 },//wall horizentale el louta
+		{ 0, LAB_HEIGHT-1, 0, 0, 0 },//wall vertical 3al lisar 
 	};
 	// une affiche.
 	//  (attention: pour des raisons de rapport d'aspect,
@@ -88,17 +88,23 @@ Labyrinthe::Labyrinthe (char* filename)
 	_treasor._y = 10;
 	_data [_treasor._x][_treasor._y] = 1;	
 	// indiquer qu'on ne marche pas sur le trésor.
-	// le chasseur et les 4 gardiens.
-	_nguards = 5;
+	// le chasseur et les 7 gardiens.
+	_nguards = 8;
 	_guards = new Mover* [_nguards];
 	_guards [0] = new Chasseur (this);
 	_guards [1] = new Gardien (this, "Lezard");
 	_guards [2] = new Gardien (this, "Blade"); _guards [2] -> _x = 90.; _guards [2] -> _y = 70.;
 	_guards [3] = new Gardien (this, "Serpent"); _guards [3] -> _x = 60.; _guards [3] -> _y = 10.;
 	_guards [4] = new Gardien (this, "Samourai"); _guards [4] -> _x = 130.; _guards [4] -> _y = 100.;
+	_guards [5] = new Gardien (this, "Marvin"); _guards [5] -> _x = 170.; _guards [5] -> _y = 140.;
+	_guards [6] = new Gardien (this, "Potator"); _guards [6] -> _x = 190.; _guards [6] -> _y = 160.;
+	_guards [7] = new Gardien (this, "garde"); _guards [7] -> _x = 210.; _guards [7] -> _y = 180.;
 	// indiquer qu'on ne marche pas sur les gardiens.
 	_data [(int)(_guards [1] -> _x / scale)][(int)(_guards [1] -> _y / scale)] = 1;
 	_data [(int)(_guards [2] -> _x / scale)][(int)(_guards [2] -> _y / scale)] = 1;
 	_data [(int)(_guards [3] -> _x / scale)][(int)(_guards [3] -> _y / scale)] = 1;
 	_data [(int)(_guards [4] -> _x / scale)][(int)(_guards [4] -> _y / scale)] = 1;
+	_data [(int)(_guards [5] -> _x / scale)][(int)(_guards [5] -> _y / scale)] = 1;
+	_data [(int)(_guards [6] -> _x / scale)][(int)(_guards [6] -> _y / scale)] = 1;
+	_data [(int)(_guards [7] -> _x / scale)][(int)(_guards [7] -> _y / scale)] = 1;
 }
