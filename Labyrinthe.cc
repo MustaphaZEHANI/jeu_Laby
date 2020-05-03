@@ -9,7 +9,7 @@ Sound*	Chasseur::_wall_hit;	// on a tapé un mur.
 Environnement* Environnement::init (char* filename)
 {
 	return new Labyrinthe (filename);
-}
+}//end Environnement init
 
 
 Labyrinthe::Labyrinthe (char* filename)
@@ -20,27 +20,40 @@ Labyrinthe::Labyrinthe (char* filename)
 		{ LAB_WIDTH-1, 0, LAB_WIDTH-1, LAB_HEIGHT-1, 0 },//wall vertical 3al limin
 		{ LAB_WIDTH-1, LAB_HEIGHT-1, 0, LAB_HEIGHT-1, 0 },//wall horizentale el louta
 		{ 0, LAB_HEIGHT-1, 0, 0, 0 },//wall vertical 3al lisar 
-	};
+	};//end of assignement 
+	//walls is an Array of Wall , 
+	//and Wall is a struct
+
 	// une affiche.
 	//  (attention: pour des raisons de rapport d'aspect,
 	// les affiches doivent faire 2 de long)
 	static Wall affiche [] = {
 		{ 4, 0, 6, 0, 0 },		// premiére affiche.
 		{ 8, 0, 10, 0, 0 },		// autre affiche.
-	};
+	};//end of assignement 
+	//affiche est de type Wall également
+
 	// 3 caisses.
 	static Box	caisses [] = {
 		{ 70, 12, 0 },
 		{ 10, 5, 0 },
 		{ 65, 22, 0 },
 	};
-
+	//end of assignement 
+	//caisses est un tableau de Box 
+	//Box est un struct  
+	//Box est seulement composé de cordonnées x & y et de _ntex ! 
+	//_ntex est à ignorer ! 
 /* DEB - NOUVEAU */
 	// 2 marques au sol.
 	static Box	marques [] = {
 		{ 50, 14, 0 },
 		{ 20, 15, 0 },
-	};
+	};//end of assignement 
+	//marques est un tableau de Box ; 
+	//une caisse bloque les déplacements ; 
+	// par contre , une marque ne bloque pas les déplacements ; 
+	//les marques disposent d'effets spéciaux 
 /* FIN - NOUVEAU */
 
 	// juste un mur autour et les 3 caisses et le trésor dedans.
@@ -107,4 +120,4 @@ Labyrinthe::Labyrinthe (char* filename)
 	_data [(int)(_guards [5] -> _x / scale)][(int)(_guards [5] -> _y / scale)] = 1;
 	_data [(int)(_guards [6] -> _x / scale)][(int)(_guards [6] -> _y / scale)] = 1;
 	_data [(int)(_guards [7] -> _x / scale)][(int)(_guards [7] -> _y / scale)] = 1;
-}
+}//end of Labyrinthe !
