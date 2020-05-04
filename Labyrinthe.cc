@@ -1,8 +1,7 @@
 #include "Labyrinthe.h"
 #include "Chasseur.h"
 #include "Gardien.h"
-#include <iostream>
-using namespace std;
+
 Sound*	Chasseur::_hunter_fire;	// bruit de l'arme du chasseur.
 Sound*	Chasseur::_hunter_hit;	// cri du chasseur touché.
 Sound*	Chasseur::_wall_hit;	// on a tapé un mur.
@@ -15,6 +14,38 @@ Environnement* Environnement::init (char* filename)
 
 Labyrinthe::Labyrinthe (char* filename)
 {
+	//on Labyrinthe.h we shall find them functions ! 	
+	//char** createMatrix(char* M[],int length);
+	cout <<"**********Game Log**********" <<endl ;
+	
+	int N=5;
+	
+	//I have defined a mapMatrix variable "M" , on Labyrinthe.h
+	//"M" is defined as char **M;
+	M=createMatrix(M,N);
+	//only works this way , so that : 
+	//the matrix is dynamically created  & then saved this way 
+    
+       
+	/*
+	string value=M[0][0];
+	cout << "inside main M[0][0] = " << value <<endl;  
+	*/
+    
+	
+	message("hello my friend , what's up with your head , foo !");
+	char msg[9999]="**labyrinthe before algorithm application**\n";
+	strcat(msg,"+++++++++++++++\n");
+	strcat(msg,"**labyrinthe after application of the algorithm**\n");
+	strcat(msg,"+      +\n"); 
+	cout << msg << endl;
+	/*
+	**labyrinthe before algorithm application** 
+	+++++++++++++++
+	**labyrinthe after application of the algorithm**
+	+      +
+	*/
+	
 	// les 4 murs.
 	static Wall walls [] = {
 		{ 0, 0, LAB_WIDTH-1, 0, 0 },//wall horizentale el fou9
@@ -121,16 +152,6 @@ Labyrinthe::Labyrinthe (char* filename)
 	_data [(int)(_guards [5] -> _x / scale)][(int)(_guards [5] -> _y / scale)] = 1;
 	_data [(int)(_guards [6] -> _x / scale)][(int)(_guards [6] -> _y / scale)] = 1;
 	_data [(int)(_guards [7] -> _x / scale)][(int)(_guards [7] -> _y / scale)] = 1;
-	message("hello my friend , what's up with your head , foo !");
-	char msg[9999]="**labyrinthe before algorithm application**\n";
-	strcat(msg,"+++++++++++++++\n");
-	strcat(msg,"**labyrinthe after application of the algorithm**\n");
-	strcat(msg,"+      +\n"); 
-	cout <<"**********Game Log**********" <<endl << msg << endl;
-	/*
-	**labyrinthe before algorithm application** 
-	+++++++++++++++
-	**labyrinthe after application of the algorithm**
-	+      +
-	*/
+
+
 }//end of Labyrinthe !
