@@ -1,7 +1,8 @@
 #include "Labyrinthe.h"
 #include "Chasseur.h"
 #include "Gardien.h"
-
+#include <iostream>
+using namespace std;
 Sound*	Chasseur::_hunter_fire;	// bruit de l'arme du chasseur.
 Sound*	Chasseur::_hunter_hit;	// cri du chasseur touché.
 Sound*	Chasseur::_wall_hit;	// on a tapé un mur.
@@ -120,4 +121,16 @@ Labyrinthe::Labyrinthe (char* filename)
 	_data [(int)(_guards [5] -> _x / scale)][(int)(_guards [5] -> _y / scale)] = 1;
 	_data [(int)(_guards [6] -> _x / scale)][(int)(_guards [6] -> _y / scale)] = 1;
 	_data [(int)(_guards [7] -> _x / scale)][(int)(_guards [7] -> _y / scale)] = 1;
+	message("hello my friend , what's up with your head , foo !");
+	char msg[9999]="**labyrinthe before algorithm application**\n";
+	strcat(msg,"+++++++++++++++\n");
+	strcat(msg,"**labyrinthe after application of the algorithm**\n");
+	strcat(msg,"+      +\n"); 
+	cout <<"**********Game Log**********" <<endl << msg << endl;
+	/*
+	**labyrinthe before algorithm application** 
+	+++++++++++++++
+	**labyrinthe after application of the algorithm**
+	+      +
+	*/
 }//end of Labyrinthe !
