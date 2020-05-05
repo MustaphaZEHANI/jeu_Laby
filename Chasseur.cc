@@ -1,16 +1,37 @@
 #include "Chasseur.h"
-
 /*
  *	Tente un deplacement.
  */
 
 bool Chasseur::move_aux (double dx, double dy)
 {
+
 	if (EMPTY == _l -> data ((int)((_x + dx) / Environnement::scale),
 							 (int)((_y + dy) / Environnement::scale)))
 	{
 		_x += dx;
 		_y += dy;
+		int x=(int) _x / Environnement::scale ; 
+		int y=(int) _y / Environnement::scale ; 
+		/* 
+		(X==Y&&X==0) ||
+		*/
+		if(  x!=X || y!=Y )
+		{
+		X=x;
+		Y=y;
+		condition=true;		
+		
+		
+		}//end if 
+	
+
+
+		if(condition)
+		{
+		positionLog();
+		condition=false;		
+		}//end if 
 		return true;
 	}
 	return false;
@@ -22,6 +43,9 @@ bool Chasseur::move_aux (double dx, double dy)
 
 Chasseur::Chasseur (Labyrinthe* l) : Mover (100, 80, l, 0)
 {
+	positionLog();
+	
+	cout << "X = "<<X<<" ; Y = "<<Y<<endl;
 	// initialise les sons.
 	_hunter_fire = new Sound ("sons/hunter_fire.wav");
 	_hunter_hit = new Sound ("sons/hunter_hit.wav");
@@ -30,14 +54,18 @@ Chasseur::Chasseur (Labyrinthe* l) : Mover (100, 80, l, 0)
 }
 
 /*
- *	Fait bouger la boule de feu (ceci est une exemple, à vous de traiter les collisions spécifiques...)
+ *	Fait bouger la boule de feu (ceci est une exemple, ï¿½ vous de traiter les collisions spï¿½cifiques...)
  */
 
 bool Chasseur::process_fireball (float dx, float dy)
 {
+	//CoordonnÃ©es de la balle 
+	float fireBall_X = _fb-> get_x()  ;
+	float fireBall_Y = _fb-> get_y()  ;
+
 	// calculer la distance entre le chasseur et le lieu de l'explosion.
-	float	x = (_x - _fb -> get_x ()) / Environnement::scale;
-	float	y = (_y - _fb -> get_y ()) / Environnement::scale;
+	float	x = (_x - fireBall_X) / Environnement::scale;
+	float	y = (_y - fireBall_Y) / Environnement::scale;
 	float	dist2 = x*x + y*y;
 	// on bouge que dans le vide!
 	if (EMPTY == _l -> data ((int)((_fb -> get_x () + dx) / Environnement::scale),
@@ -48,11 +76,27 @@ bool Chasseur::process_fireball (float dx, float dy)
 		return true;
 	}
 	// collision...
+	//we need to make the fireball coordinates realistic via the Scale
+	//Environment::Scale 
+		 
+	/*
+ 	fireBall_X = fireBall_X / Environnement::scale ;
+	fireBall_Y = fireBall_Y / Environnement::scale ; 
+	*/
+
+	int X=(int)_x/Environnement::scale;
+	int Y=(int)_y/Environnement::scale;
+	
+	//Labyrinthe* L ; 
+	/* 	
+	char Coordinates=Labyrinthe:: data((int)(fireBall_X),(int)(fireBall_Y));
+	*/	
+
 	// calculer la distance maximum en ligne droite.
 	float	dmax2 = (_l -> width ())*(_l -> width ()) + (_l -> height ())*(_l -> height ());
 	// faire exploser la boule de feu avec un bruit fonction de la distance.
 	_wall_hit -> play (1. - dist2/dmax2);
-	message ("Booom...");
+	message ("Booom...The hunter is at : ( %d , %d )",X,Y);
 	return false;
 }
 
@@ -65,14 +109,14 @@ void Chasseur::fire (int angle_vertical)
 	message ("Woooshh...");
 	_hunter_fire -> play ();
 	_fb -> init (/* position initiale de la boule */ _x, _y, 10.,
-				 /* angles de visée */ angle_vertical, _angle);
+				 /* angles de visï¿½e */ angle_vertical, _angle);
 }
 
 /*
- *	Clic droit: par défaut fait tomber le premier gardien.
+ *	Clic droit: par dï¿½faut fait tomber le premier gardien.
  *
  *	Inutile dans le vrai jeu, mais c'est juste pour montrer
- *	une utilisation des fonctions « tomber » et « rester_au_sol »
+ *	une utilisation des fonctions ï¿½ tomber ï¿½ et ï¿½ rester_au_sol ï¿½
  */
 
 void Chasseur::right_click (bool shift, bool control)
