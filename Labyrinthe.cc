@@ -25,12 +25,14 @@ Labyrinthe::Labyrinthe (char* filename)
 	M=createMatrix(M,N);
 	//only works this way , so that : 
 	//the matrix is dynamically created  & then saved this way 
-    
+    //it ain't work as a void function ! 
        
-	/*
+	
+	/* 
 	string value=M[0][0];
 	cout << "inside main M[0][0] = " << value <<endl;  
 	*/
+	
     
 	
 	message("hello my friend , what's up with your head , foo !");
@@ -52,9 +54,14 @@ Labyrinthe::Labyrinthe (char* filename)
 		{ LAB_WIDTH-1, 0, LAB_WIDTH-1, LAB_HEIGHT-1, 0 },//wall vertical 3al limin
 		{ LAB_WIDTH-1, LAB_HEIGHT-1, 0, LAB_HEIGHT-1, 0 },//wall horizentale el louta
 		{ 0, LAB_HEIGHT-1, 0, 0, 0 },//wall vertical 3al lisar 
+		{3,20,3,10,0}
+		
 	};//end of assignement 
 	//walls is an Array of Wall , 
 	//and Wall is a struct
+
+	//this type of wall : {6,20,4,10,0} 
+	//wouldn't be displayed ! 
 
 	// une affiche.
 	//  (attention: pour des raisons de rapport d'aspect,
@@ -100,8 +107,8 @@ Labyrinthe::Labyrinthe (char* filename)
 	_data [caisses [0]._x][caisses [0]._y] = 1;
 	_data [caisses [1]._x][caisses [1]._y] = 1;
 	_data [caisses [2]._x][caisses [2]._y] = 1;
-	// les 4 murs.
-	_nwall = 4;
+	// le nombre des murs.
+	_nwall = 5;
 	_walls = walls;
 	// deux affiches.
 	_npicts = 2;
@@ -136,14 +143,70 @@ Labyrinthe::Labyrinthe (char* filename)
 	// le chasseur et les 7 gardiens.
 	_nguards = 8;
 	_guards = new Mover* [_nguards];
+	_models=new string[_nguards] ;
 	_guards [0] = new Chasseur (this);
-	_guards [1] = new Gardien (this, "Lezard");
-	_guards [2] = new Gardien (this, "Blade"); _guards [2] -> _x = 90.; _guards [2] -> _y = 70.;
-	_guards [3] = new Gardien (this, "Serpent"); _guards [3] -> _x = 60.; _guards [3] -> _y = 10.;
-	_guards [4] = new Gardien (this, "Samourai"); _guards [4] -> _x = 130.; _guards [4] -> _y = 100.;
-	_guards [5] = new Gardien (this, "Marvin"); _guards [5] -> _x = 170.; _guards [5] -> _y = 140.;
-	_guards [6] = new Gardien (this, "Potator"); _guards [6] -> _x = 190.; _guards [6] -> _y = 160.;
-	_guards [7] = new Gardien (this, "garde"); _guards [7] -> _x = 210.; _guards [7] -> _y = 180.;
+	_models[0]="";
+	//hunter got no model / Hunter.model = 0 ;
+	//char tmpModel[9];
+	_models[1]="Lezard";
+	//strcpy(tmpModel,_models[1].c_str());
+	_guards [1] = new Gardien (this, _models[1].c_str());
+	//cout << "le modele du Gardien n(1) = " << _guards[1]->_model  <<endl;
+	//that returns the value of the model on the memory example x0298bf
+	cout << "le modele du Gardien n(1) = " << _models[1] <<endl;
+	
+
+	_models[2]="Blade";
+	//strcpy(tmpModel,_models[2].c_str());
+	cout<<"pour le 2eme modele blade , tmpModel devient :  "<<_models[2]<<endl;
+	_guards [2] = new Gardien (this, _models[2].c_str());
+	
+	_guards [2] -> _x = 90.; 
+	_guards [2] -> _y = 70.;
+	
+	_models[3]="Serpent";
+	//strcpy(tmpModel,_models[3].c_str());
+
+	_guards [3] = new Gardien (this, _models[3].c_str());
+	_guards [3] -> _x = 60.; 
+	_guards [3] -> _y = 10.;
+	
+
+
+	_models[4]="Samourai";
+	//strcpy(tmpModel,_models[4].c_str());
+
+	_guards [4] = new Gardien (this, _models[4].c_str()); 
+	_guards [4] -> _x = 130.;
+	_guards [4] -> _y = 100.;
+	
+	
+	
+	_models[5]="Marvin";
+	//strcpy(tmpModel,_models[5].c_str());
+
+	_guards [5] = new Gardien (this,_models[5].c_str() );
+	 _guards [5] -> _x = 170.;
+	 _guards [5] -> _y = 140.;
+	
+
+
+
+
+
+	_models[6]="Potator";
+	//strcpy(tmpModel,_models[6].c_str());
+
+	_guards [6] = new Gardien (this,_models[6].c_str() ); 
+	_guards [6] -> _x = 190.; 
+	_guards [6] -> _y = 160.;
+	
+	_models[7]="garde";
+	//strcpy(tmpModel,_models[7].c_str());
+
+	_guards [7] = new Gardien (this, _models[7].c_str());
+	_guards [7] -> _x = 210.;
+	_guards [7] -> _y = 180.;
 	// indiquer qu'on ne marche pas sur les gardiens.
 	_data [(int)(_guards [1] -> _x / scale)][(int)(_guards [1] -> _y / scale)] = 1;
 	_data [(int)(_guards [2] -> _x / scale)][(int)(_guards [2] -> _y / scale)] = 1;

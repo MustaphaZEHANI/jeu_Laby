@@ -22,7 +22,7 @@ public:
 	//-----------------------------
 	
 	//**defining New Variables**
-
+	//my own variables : 
 	string **M;
 	
 	//**defining New Functions**
@@ -35,11 +35,12 @@ public:
 		for (int i = 0; i < N; ++i)
 		M[i] = new string[2];
 
-	/*
+
+	/* 
  	M[0][0]="a";
 	string value=M[0][0];
 	cout << "inside function M[0][0] = " << value <<endl; 
-	*/ 
+	*/
 	
 
 	return M    ;
