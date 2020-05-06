@@ -4,8 +4,8 @@
 #include "Environnement.h"
 #include <iostream>
 using namespace std;
-#define	LAB_WIDTH	80
-#define	LAB_HEIGHT	25
+#define	LAB_WIDTH	100 //80
+#define	LAB_HEIGHT	100//25
 
 class Labyrinthe : public Environnement {
 private:

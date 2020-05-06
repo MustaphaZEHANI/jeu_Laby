@@ -43,7 +43,8 @@ public:
 	X=x;
 	Y=y;
 	cout <<"le chasseur se trouve a la position : ";
-	cout <<"( "<<x<<" , "<<y<<" )"<<endl;	
+	cout <<"( "<<x<<" , "<<y<<" ) ; reellement : ";	
+	cout <<"( "<<_x<<" , "<<_y<<" )"<<endl;	
 	}//end of function
 
 	//initiating my defined variables in here : 
