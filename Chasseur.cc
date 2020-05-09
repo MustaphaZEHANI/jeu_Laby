@@ -6,7 +6,8 @@
 
 bool Chasseur::move_aux (double dx, double dy)
 {
-
+dx=dx*4;
+dy=dy*4;
 	if (EMPTY == _l -> data ((int)((_x + dx) / Environnement::scale),
 							 (int)((_y + dy) / Environnement::scale)))
 	{
@@ -67,7 +68,7 @@ Chasseur::Chasseur (Labyrinthe* l) : Mover (100, 80, l, 0)
 	
 	cout << "X = "<<X<<" ; Y = "<<Y<<endl;
 	
-	
+	//_x=1000;
 
 	
 	// initialise les sons.

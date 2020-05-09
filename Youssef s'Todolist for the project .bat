@@ -358,7 +358,6 @@ commit labyrinthe.h chasseur.h
 
 step 1.12111
 
-<current step> 
 
 
 -
@@ -558,7 +557,7 @@ _nwall++;
 
 
 
-
+-
 
 if successful
 commit labyrinthe.cc labyrinthe.h 
@@ -567,6 +566,7 @@ youssef s'Todolist for the project.bat
 
 
 ( before you commit check all the parent tasks ! )
+> parent tasks & child tasks checked ... 
 "
 waiting for commmit ...
 Verifying related steps ... 
@@ -575,25 +575,103 @@ Data from external steps transferred in here ...
 | User Can Commit |
 
 "
-< Doing > 
+< Done > 
 
 --------------------------------------------------------
-<not yet>
-step 
+
+step *
 
 *make the mapPreparing(_data[limits]=1)
 make it as a function 
+
+void MapInitializer()
+<Done>
 
 *make a function , 
 that from a wall 
 coordinates , 
 would block the wall 
 & make it "untouchable" ! 
+<Done>
+-
+Experimenting how a banner is displayed 
+< Result : x1=x;x2=x1+2; > 
+-
+Finished making a function that 
+make the walls untouchable 
+blockWall(); 
+
+-
+gonna test with different walls 
+the blockwall() function ! 
+tested different walls , it works 
+marvellously ! 
+
+-
+
+commit labyrinthe.cc labyrinthe.h 
+"MapInitilizer+Wall_Blocker implemented"
+
+| waiting for commit ... |
+
+Overall State : < Done > 
+
+
+----------------------------------------------------------
+<current step> 
+
+step **
+
+*make a function that blocks boxes 
+"Done" ;
+
+*make a function that reads from file , 
+test it on the c++ compiler on another 
+project using the same text file ! 
+( getting the value into MapMatrix )
+using the fromCharArrayToStringArray function ! 
+"Done"
+-
+Added file name display ! 
+-
+before reading the file !
+fixed  the testing c++file , 
+ 
+next step would be to 
+include the txt file 
+in the testing c++ file 
+& then to read it 
+-
+included the txt file , 
+& read it , 
+& the matrix got the txt map 
+next step would be to , 
+copy the testing code , 
+into the game ! 
+-
+fixed a bug that breaks the program memory ! 
+-
+saving the last compilation Log ! 
+before the commit into the todolist file ! 
+-
+
+commit labyrinthe.cc labyrinthe.h 
+thistodolistfile
+"Box Blocker()+File_into_MapMatrix()"
+
+|waiting for commit| 
+
+
+<Doing>
+----------------------------------------------------------
+
+step *** 
+
+make modularity on the labyrinthe.cc 
 
 
 
 
-< To Do > 
 
 
 ----------------------------------------------------------
@@ -850,116 +928,421 @@ ____________________________ End of Absurdities ____________________________
             +++++++++++++++++++++++++++++++++++++++++++++++++++++      
 _____________                     Game Log                      _____________
             +++++++++++++++++++++++++++++++++++++++++++++++++++++      
-PS C:\Users\Riados\Documents\cstrike game c++ project> make -f Makefile-proto
+PS C:\Users\Riados\Documents\cstrike game c++ project> make -f Makefile-proto                         
 g++ -Wall -O3 -c Labyrinthe.cc -o Labyrinthe.o
 g++ -no-pie -o labh.exe Labyrinthe.o Chasseur.o OpenGL-windows.o -Wl,--subsystem,console -mwindows -Lfltk-1.4-windows -lfltk_images -lfltk_png -lfltk_z -lfltk_jpeg -lfltk_gl -lfltk -lwinmm -lglu32 -lopengl32 -lole32 -luuid -lcomctl32 -lws2_32 -lwinpthread -static
-PS C:\Users\Riados\Documents\cstrike game c++ project> ./"labh.exe" -l "labyrinthe.txt"   -f -a 
+PS C:\Users\Riados\Documents\cstrike game c++ project> ./"labh.exe" -l "labyrinthe.txt"   -f -a       
+file name : labyrinthe.txt
 **********Game Log**********
-**labyrinthe before algorithm application**
-+++++++++++++++
-**labyrinthe after application of the algorithm**
-+      +
-
 ____________Voici la matrice du Map____________
-01   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-02   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-03   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-04   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-05   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-06   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-07   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-08   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-09   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-10   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-11   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-12   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-13   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-14   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-15   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-16   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-17   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-18   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-19   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-20   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-21   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-22   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-23   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-24   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-25   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-26   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-27   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-28   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-29   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-30   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-31   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-32   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-33   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-34   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-35   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-36   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-37   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-38   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-39   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-40   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-41   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-42   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-43   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-44   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-45   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-46   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-47   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-48   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-49   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-50   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-51   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-52   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-53   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-54   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-55   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-56   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-57   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-58   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-59   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-60   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-61   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-62   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-63   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-64   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-65   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-66   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-67   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-68   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-69   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-70   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-71   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-72   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-73   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-74   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-75   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-76   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-77   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-78   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-79   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-80   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-81   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-82   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-83   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-84   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-85   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-86   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-87   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-88   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-89   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-90   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-91   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-92   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-93   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-94   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-95   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-96   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-97   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-98   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-99   ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+01   ]
+   
+02   ]
+   
+03   ]
+
+04   ]
+
+05   ]
+
+06   ]
+
+07   ]
+
+08   ]
+
+09   ]
+   
+10   ]
+   
+11   ]
+
+12   ]
+   
+13   ]
+
+14   ]
+
+15   ]
+
+16   ]
+   
+17   ]
+
+18   ]                                                                                                
+
+19   ]
+
+20   ]
+
+21   ]
+
+22   ]
+
+23   ]
+
+24   ]
+
+25   ]
+
+26   ]
+
+27   ]
+
+28   ]
+
+29   ]
+   
+30   ]
+
+31   ]
+
+32   ]
+
+33   ]
+   
+34   ]
+   
+35   ]
+
+36   ]
+
+37   ]
+   
+38   ]
+   
+39   ]
+
+40   ]
+
+41   ]
+   
+42   ]                                                                                               
+
+43   ]
+   
+44   ]
+   
+45   ]
+
+46   ]
+
+47   ]
+
+48   ]
+
+49   ]
+
+50   ]
+
+51   ]
+
+52   ]
+
+53   ]
+   
+54   ]
+
+55   ]
+
+56   ]
+   
+57   ]
+   
+58   ]
+
+59   ]
+
+60   ]
+   
+61   ]
+
+62   ]
+   
+63   ]                                                                                                
+
+64   ]
+
+65   ]                                                                                                
+
+66   ]
+
+67   ]
+
+68   ]
+   
+69   ]
+
+70   ]
+
+71   ]
+   
+72   ]
+   
+73   ]
+
+74   ]
+   
+75   ]
+
+76   ]
+
+77   ]
+   
+78   ]
+
+79   ]
+
+80   ]
+   
+81   ]
+
+82   ]
+   
+83   ]
+
+84   ]
+
+85   ]
+
+86   ]
+   
+87   ]
+
+88   ]
+
+89   ]
+   
+90   ]
+
+91   ]
+   
+92   ]
+
+93   ]
+
+94   ]
+   
+95   ]
+
+96   ]
+
+97   ]
+
+98   ]
+
+99   ]
+
+____________Fin de la matrice____________
+M[1] [6] = ' '
+Reading the file : labyrinthe.txt
+____________________Inside File____________________
+00   ]# un commentaire commence par #
+01   ]
+02   ]a affiche1.jpg    # texture de l'affiche 1
+03   ]b affiche2.jpg    # texture de l'affiche 2
+04   ] 
+05   ]
+06   ]+-----------b------------------------------------------------------------+
+07   ]|  x                                                                  G  +-----------------+    
+08   ]| C                                                                                        |    
+09   ]|    +----------------------------+----------+   +------------+-------------------------+  |    
+10   ]|x   |                            +----------+   +------------+                         |  |    
+11   ]|    |      +------------------+  |                           |                         |  |    
+12   ]|    |      |                  |  |                           |                         |  |    
+13   ]|    |      |         x        |  |    G                      |                         |  |    
+14   ]|    |      |                  |  |                           |                         |  |    
+15   ]|    | G    |                  |  |                           |                         |  |    
+16   ]|    |      |                  |  |                           a                         |  |    
+17   ]|    |      |                  |  +---------------------------+                         |  |    
+18   ]|    |      |                  |                              |                         |  |
+19   ]|    +------+                  |           +--+               |                         |  |    
+20   ]|  x                           |           |  +------------+  |                         |  |
+21   ]|                    x         |           |  +------------+  |                         |  |    
+22   ]|                              |           |                  |                         |  |    
+23   ]|  +--------a------------------+           |                  |                         |  |    
+24   ]|  |                                       |                  |                         |  |    
+25   ]|  |           ++                          +---------------+  |                         |  |    
+26   ]|  |           ||                                          |  |                         |  |    
+27   ]|  |           ||          G                               |  |                         |  |    
+28   ]|  |           ++                    +--------------+      |  |                         |  |
+29   ]|  |                                 |              |      |  |                         |  |    
+30   ]|  |    G      ++                    |              |   G  |  |                         |  |    
+31   ]|  |           ||                    |              +---a--+  |                         |  |    
+32   ]|  |           a|                    |                        |                         |  |    
+33   ]|  |           ||                    |                        |                         |  |    
+34   ]|  +--------+  ||  +-----------------+---------------------+  +----------------+        |  |    
+35   ]|  +--------+  ++  +---------------------------------------+                   |        |  |    
+36   ]|                                                                              |        |  |    
+37   ]|                                                                              |        |  |    
+38   ]+-------------------------++   +-----a------+                 +----+           |        |  |    
+39   ]|                         ||   |            |        x        |    |      G    |        |  |    
+40   ]|                         ||   |            +--a---a-------+  |    |           |        |  |    
+41   ]a      G                  ++   |    G       +------a-------+  |    +--------+  |        |  |    
+42   ]|                              |                              |             |  |        |  |    
+43   ]|                              |                              |             |  |        |  |
+44   ]|                         ++   +---------------------------+  |             |  |        |  |    
+45   ]|                         ||   +----a----------------------+  +------a--a---+  |        |  |    
+46   ]|                         ||                                                   +--------+  |
+47   ]|        G                ||                                                               |    
+48   ]+--------------a----------++--------a-a-------------------------------------------------+  |    
+49   ]                                                                                        |  |    
+50   ]                                                                                        |  |    
+51   ]                                                                                        |  |    
+52   ]                                                                                        |  |    
+53   ]                                                                                        |  |    
+54   ]                                                                                        |  |    
+55   ]                                                                                        |  |    
+56   ]                                                                                        |  |    
+57   ]                                                                                        |  |    
+58   ]                                                                                        |  |
+59   ]                                                                                        |  |    
+60   ]                                                                                        |  |    
+61   ]                                                                              +---------+  |    
+62   ]                                                                              |            |    
+63   ]                                                                              +            |    
+64   ]                                                                                  T        |    
+65   ]                                                                              +            |    
+66   ]                                                                              |         G  |    
+67   ]                                                                              +------------+
+____________________End of File____________________
+____________Voici la matrice du Map____________
+01   ]+-----------b------------------------------------------------------------+
+02   ]|  x                                                                  G  +-----------------+
+03   ]| C                                                                                        |
+04   ]|    +----------------------------+----------+   +------------+-------------------------+  |
+05   ]|x   |                            +----------+   +------------+                         |  |
+06   ]|    |      +------------------+  |                           |                         |  |
+07   ]|    |      |                  |  |                           |                         |  |
+08   ]|    |      |         x        |  |    G                      |                         |  |
+09   ]|    |      |                  |  |                           |                         |  |
+10   ]|    | G    |                  |  |                           |                         |  |
+11   ]|    |      |                  |  |                           a                         |  |
+12   ]|    |      |                  |  +---------------------------+                         |  |
+13   ]|    |      |                  |                              |                         |  |
+14   ]|    +------+                  |           +--+               |                         |  |
+15   ]|  x                           |           |  +------------+  |                         |  |
+16   ]|                    x         |           |  +------------+  |                         |  |
+17   ]|                              |           |                  |                         |  |
+18   ]|  +--------a------------------+           |                  |                         |  |
+19   ]|  |                                       |                  |                         |  |
+20   ]|  |           ++                          +---------------+  |                         |  |
+21   ]|  |           ||                                          |  |                         |  |
+22   ]|  |           ||          G                               |  |                         |  |
+23   ]|  |           ++                    +--------------+      |  |                         |  |
+24   ]|  |                                 |              |      |  |                         |  |
+25   ]|  |    G      ++                    |              |   G  |  |                         |  |
+26   ]|  |           ||                    |              +---a--+  |                         |  |
+27   ]|  |           a|                    |                        |                         |  |
+28   ]|  |           ||                    |                        |                         |  |
+29   ]|  +--------+  ||  +-----------------+---------------------+  +----------------+        |  |
+30   ]|  +--------+  ++  +---------------------------------------+                   |        |  |
+31   ]|                                                                              |        |  |
+32   ]|                                                                              |        |  |
+33   ]+-------------------------++   +-----a------+                 +----+           |        |  |
+34   ]|                         ||   |            |        x        |    |      G    |        |  |
+35   ]|                         ||   |            +--a---a-------+  |    |           |        |  |
+36   ]a      G                  ++   |    G       +------a-------+  |    +--------+  |        |  |
+37   ]|                              |                              |             |  |        |  |
+38   ]|                              |                              |             |  |        |  |
+39   ]|                         ++   +---------------------------+  |             |  |        |  |
+40   ]|                         ||   +----a----------------------+  +------a--a---+  |        |  |
+41   ]|                         ||                                                   +--------+  |
+42   ]|        G                ||                                                               |
+43   ]+--------------a----------++--------a-a-------------------------------------------------+  |
+44   ]                                                                                        |  |
+45   ]                                                                                        |  |
+46   ]                                                                                        |  |
+47   ]                                                                                        |  |
+48   ]                                                                                        |  |
+49   ]                                                                                        |  |
+50   ]                                                                                        |  |
+51   ]                                                                                        |  |
+52   ]                                                                                        |  |
+53   ]                                                                                        |  |
+54   ]                                                                                        |  |
+55   ]                                                                                        |  |
+56   ]                                                                              +---------+  |
+57   ]                                                                              |            |
+58   ]                                                                              +            |
+59   ]                                                                                  T        |
+60   ]                                                                              +            |    
+61   ]                                                                              |         G  |
+62   ]                                                                              +------------+
+63   ]
+
+64   ]
+
+65   ]
+   
+66   ]
+
+67   ]
+   
+68   ]
+   
+69   ]
+
+70   ]
+
+71   ]
+
+72   ]
+
+73   ]
+
+74   ]
+   
+75   ]
+
+76   ]
+   
+77   ]
+
+78   ]
+
+79   ]
+
+80   ]
+
+81   ]
+
+82   ]
+   
+83   ]
+
+84   ]
+
+85   ]
+   
+86   ]
+
+87   ]
+
+88   ]
+
+89   ]
+
+90   ]
+
+91   ]
+
+92   ]
+
+93   ]
+   
+94   ]
+
+95   ]
+
+96   ]
+   
+97   ]
+
+98   ]
+   
+99   ]
+
 ____________Fin de la matrice____________
 blocking walls s' First test :
 x1 = 3; y1 = 20; x2 = 3; y2 = 10
@@ -977,7 +1360,251 @@ startIndex = 10 ; EndIndex = 20
  VarIndex = 18 ; _data[3][18] = 1
  VarIndex = 19 ; _data[3][19] = 1
  VarIndex = 20 ; _data[3][20] = 1
+blocking walls s' First test :
+x1 = 3; y1 = 40; x2 = 3; y2 = 99
+_ConstAxe = 3 ; startIndex = 40 ; EndIndex = 99 ; Conditon = 1
+after Revision ^_^
+startIndex = 40 ; EndIndex = 99
+ VarIndex = 40 ; _data[3][40] = 1
+ VarIndex = 41 ; _data[3][41] = 1
+ VarIndex = 42 ; _data[3][42] = 1
+ VarIndex = 43 ; _data[3][43] = 1
+ VarIndex = 44 ; _data[3][44] = 1
+ VarIndex = 45 ; _data[3][45] = 1
+ VarIndex = 46 ; _data[3][46] = 1
+ VarIndex = 47 ; _data[3][47] = 1
+ VarIndex = 48 ; _data[3][48] = 1
+ VarIndex = 49 ; _data[3][49] = 1
+ VarIndex = 50 ; _data[3][50] = 1
+ VarIndex = 51 ; _data[3][51] = 1
+ VarIndex = 52 ; _data[3][52] = 1
+ VarIndex = 53 ; _data[3][53] = 1
+ VarIndex = 54 ; _data[3][54] = 1
+ VarIndex = 55 ; _data[3][55] = 1
+ VarIndex = 56 ; _data[3][56] = 1
+ VarIndex = 57 ; _data[3][57] = 1
+ VarIndex = 58 ; _data[3][58] = 1
+ VarIndex = 59 ; _data[3][59] = 1
+ VarIndex = 60 ; _data[3][60] = 1
+ VarIndex = 61 ; _data[3][61] = 1
+ VarIndex = 62 ; _data[3][62] = 1
+ VarIndex = 63 ; _data[3][63] = 1
+ VarIndex = 64 ; _data[3][64] = 1
+ VarIndex = 65 ; _data[3][65] = 1
+ VarIndex = 66 ; _data[3][66] = 1
+ VarIndex = 67 ; _data[3][67] = 1
+ VarIndex = 68 ; _data[3][68] = 1
+ VarIndex = 69 ; _data[3][69] = 1
+ VarIndex = 70 ; _data[3][70] = 1
+ VarIndex = 71 ; _data[3][71] = 1
+ VarIndex = 72 ; _data[3][72] = 1
+ VarIndex = 73 ; _data[3][73] = 1
+ VarIndex = 74 ; _data[3][74] = 1
+ VarIndex = 75 ; _data[3][75] = 1
+ VarIndex = 76 ; _data[3][76] = 1
+ VarIndex = 77 ; _data[3][77] = 1
+ VarIndex = 78 ; _data[3][78] = 1
+ VarIndex = 79 ; _data[3][79] = 1
+ VarIndex = 80 ; _data[3][80] = 1
+ VarIndex = 81 ; _data[3][81] = 1
+ VarIndex = 82 ; _data[3][82] = 1
+ VarIndex = 83 ; _data[3][83] = 1
+ VarIndex = 84 ; _data[3][84] = 1
+ VarIndex = 85 ; _data[3][85] = 1
+ VarIndex = 86 ; _data[3][86] = 1
+ VarIndex = 87 ; _data[3][87] = 1
+ VarIndex = 88 ; _data[3][88] = 1
+ VarIndex = 89 ; _data[3][89] = 1
+ VarIndex = 90 ; _data[3][90] = 1
+ VarIndex = 91 ; _data[3][91] = 1
+ VarIndex = 92 ; _data[3][92] = 1
+ VarIndex = 93 ; _data[3][93] = 1
+ VarIndex = 94 ; _data[3][94] = 1
+ VarIndex = 95 ; _data[3][95] = 1
+ VarIndex = 96 ; _data[3][96] = 1
+ VarIndex = 97 ; _data[3][97] = 1
+ VarIndex = 98 ; _data[3][98] = 1
+ VarIndex = 99 ; _data[3][99] = 1
+blocking walls s' First test :
+x1 = 5; y1 = 20; x2 = 5; y2 = 60
+_ConstAxe = 5 ; startIndex = 20 ; EndIndex = 60 ; Conditon = 1
+after Revision ^_^
+startIndex = 20 ; EndIndex = 60
+ VarIndex = 20 ; _data[5][20] = 1
+ VarIndex = 21 ; _data[5][21] = 1
+ VarIndex = 22 ; _data[5][22] = 1
+ VarIndex = 23 ; _data[5][23] = 1
+ VarIndex = 24 ; _data[5][24] = 1
+ VarIndex = 25 ; _data[5][25] = 1
+ VarIndex = 26 ; _data[5][26] = 1
+ VarIndex = 27 ; _data[5][27] = 1
+ VarIndex = 28 ; _data[5][28] = 1
+ VarIndex = 29 ; _data[5][29] = 1
+ VarIndex = 30 ; _data[5][30] = 1
+ VarIndex = 31 ; _data[5][31] = 1
+ VarIndex = 32 ; _data[5][32] = 1
+ VarIndex = 33 ; _data[5][33] = 1
+ VarIndex = 34 ; _data[5][34] = 1
+ VarIndex = 35 ; _data[5][35] = 1
+ VarIndex = 36 ; _data[5][36] = 1
+ VarIndex = 37 ; _data[5][37] = 1
+ VarIndex = 38 ; _data[5][38] = 1
+ VarIndex = 39 ; _data[5][39] = 1
+ VarIndex = 40 ; _data[5][40] = 1
+ VarIndex = 41 ; _data[5][41] = 1
+ VarIndex = 42 ; _data[5][42] = 1
+ VarIndex = 43 ; _data[5][43] = 1
+ VarIndex = 44 ; _data[5][44] = 1
+ VarIndex = 45 ; _data[5][45] = 1
+ VarIndex = 46 ; _data[5][46] = 1
+ VarIndex = 47 ; _data[5][47] = 1
+ VarIndex = 48 ; _data[5][48] = 1
+ VarIndex = 49 ; _data[5][49] = 1
+ VarIndex = 50 ; _data[5][50] = 1
+ VarIndex = 51 ; _data[5][51] = 1
+ VarIndex = 52 ; _data[5][52] = 1
+ VarIndex = 53 ; _data[5][53] = 1
+ VarIndex = 54 ; _data[5][54] = 1
+ VarIndex = 55 ; _data[5][55] = 1
+ VarIndex = 56 ; _data[5][56] = 1
+ VarIndex = 57 ; _data[5][57] = 1
+ VarIndex = 58 ; _data[5][58] = 1
+ VarIndex = 59 ; _data[5][59] = 1
+ VarIndex = 60 ; _data[5][60] = 1
+blocking walls s' First test :
+x1 = 5; y1 = 60; x2 = 5; y2 = 99
+_ConstAxe = 5 ; startIndex = 60 ; EndIndex = 99 ; Conditon = 1
+after Revision ^_^
+startIndex = 60 ; EndIndex = 99
+ VarIndex = 60 ; _data[5][60] = 1
+ VarIndex = 61 ; _data[5][61] = 1
+ VarIndex = 62 ; _data[5][62] = 1
+ VarIndex = 63 ; _data[5][63] = 1
+ VarIndex = 64 ; _data[5][64] = 1
+ VarIndex = 65 ; _data[5][65] = 1
+ VarIndex = 66 ; _data[5][66] = 1
+ VarIndex = 67 ; _data[5][67] = 1
+ VarIndex = 68 ; _data[5][68] = 1
+ VarIndex = 69 ; _data[5][69] = 1
+ VarIndex = 70 ; _data[5][70] = 1
+ VarIndex = 71 ; _data[5][71] = 1
+ VarIndex = 72 ; _data[5][72] = 1
+ VarIndex = 73 ; _data[5][73] = 1
+ VarIndex = 74 ; _data[5][74] = 1
+ VarIndex = 75 ; _data[5][75] = 1
+ VarIndex = 76 ; _data[5][76] = 1
+ VarIndex = 77 ; _data[5][77] = 1
+ VarIndex = 78 ; _data[5][78] = 1
+ VarIndex = 79 ; _data[5][79] = 1
+ VarIndex = 80 ; _data[5][80] = 1
+ VarIndex = 81 ; _data[5][81] = 1
+ VarIndex = 82 ; _data[5][82] = 1
+ VarIndex = 83 ; _data[5][83] = 1
+ VarIndex = 84 ; _data[5][84] = 1
+ VarIndex = 85 ; _data[5][85] = 1
+ VarIndex = 86 ; _data[5][86] = 1
+ VarIndex = 87 ; _data[5][87] = 1
+ VarIndex = 88 ; _data[5][88] = 1
+ VarIndex = 89 ; _data[5][89] = 1
+ VarIndex = 90 ; _data[5][90] = 1
+ VarIndex = 91 ; _data[5][91] = 1
+ VarIndex = 92 ; _data[5][92] = 1
+ VarIndex = 93 ; _data[5][93] = 1
+ VarIndex = 94 ; _data[5][94] = 1
+ VarIndex = 95 ; _data[5][95] = 1
+ VarIndex = 96 ; _data[5][96] = 1
+ VarIndex = 97 ; _data[5][97] = 1
+ VarIndex = 98 ; _data[5][98] = 1
+ VarIndex = 99 ; _data[5][99] = 1
+blocking walls s' First test :
+x1 = 7; y1 = 99; x2 = 7; y2 = 18
+_ConstAxe = 7 ; startIndex = 99 ; EndIndex = 18 ; Conditon = 1
+after Revision ^_^
+startIndex = 18 ; EndIndex = 99
+ VarIndex = 18 ; _data[7][18] = 1
+ VarIndex = 19 ; _data[7][19] = 1
+ VarIndex = 20 ; _data[7][20] = 1
+ VarIndex = 21 ; _data[7][21] = 1
+ VarIndex = 22 ; _data[7][22] = 1
+ VarIndex = 23 ; _data[7][23] = 1
+ VarIndex = 24 ; _data[7][24] = 1
+ VarIndex = 25 ; _data[7][25] = 1
+ VarIndex = 26 ; _data[7][26] = 1
+ VarIndex = 27 ; _data[7][27] = 1
+ VarIndex = 28 ; _data[7][28] = 1
+ VarIndex = 29 ; _data[7][29] = 1
+ VarIndex = 30 ; _data[7][30] = 1
+ VarIndex = 31 ; _data[7][31] = 1
+ VarIndex = 32 ; _data[7][32] = 1
+ VarIndex = 33 ; _data[7][33] = 1
+ VarIndex = 34 ; _data[7][34] = 1
+ VarIndex = 35 ; _data[7][35] = 1
+ VarIndex = 36 ; _data[7][36] = 1
+ VarIndex = 37 ; _data[7][37] = 1
+ VarIndex = 38 ; _data[7][38] = 1
+ VarIndex = 39 ; _data[7][39] = 1
+ VarIndex = 40 ; _data[7][40] = 1
+ VarIndex = 41 ; _data[7][41] = 1
+ VarIndex = 42 ; _data[7][42] = 1
+ VarIndex = 43 ; _data[7][43] = 1
+ VarIndex = 44 ; _data[7][44] = 1
+ VarIndex = 45 ; _data[7][45] = 1
+ VarIndex = 46 ; _data[7][46] = 1
+ VarIndex = 47 ; _data[7][47] = 1
+ VarIndex = 48 ; _data[7][48] = 1
+ VarIndex = 49 ; _data[7][49] = 1
+ VarIndex = 50 ; _data[7][50] = 1
+ VarIndex = 51 ; _data[7][51] = 1
+ VarIndex = 52 ; _data[7][52] = 1
+ VarIndex = 53 ; _data[7][53] = 1
+ VarIndex = 54 ; _data[7][54] = 1
+ VarIndex = 55 ; _data[7][55] = 1
+ VarIndex = 56 ; _data[7][56] = 1
+ VarIndex = 57 ; _data[7][57] = 1
+ VarIndex = 58 ; _data[7][58] = 1
+ VarIndex = 59 ; _data[7][59] = 1
+ VarIndex = 60 ; _data[7][60] = 1
+ VarIndex = 61 ; _data[7][61] = 1
+ VarIndex = 62 ; _data[7][62] = 1
+ VarIndex = 63 ; _data[7][63] = 1
+ VarIndex = 64 ; _data[7][64] = 1
+ VarIndex = 65 ; _data[7][65] = 1
+ VarIndex = 66 ; _data[7][66] = 1
+ VarIndex = 67 ; _data[7][67] = 1
+ VarIndex = 68 ; _data[7][68] = 1
+ VarIndex = 69 ; _data[7][69] = 1
+ VarIndex = 70 ; _data[7][70] = 1
+ VarIndex = 71 ; _data[7][71] = 1
+ VarIndex = 72 ; _data[7][72] = 1
+ VarIndex = 73 ; _data[7][73] = 1
+ VarIndex = 74 ; _data[7][74] = 1
+ VarIndex = 75 ; _data[7][75] = 1
+ VarIndex = 76 ; _data[7][76] = 1
+ VarIndex = 77 ; _data[7][77] = 1
+ VarIndex = 78 ; _data[7][78] = 1
+ VarIndex = 79 ; _data[7][79] = 1
+ VarIndex = 80 ; _data[7][80] = 1
+ VarIndex = 81 ; _data[7][81] = 1
+ VarIndex = 82 ; _data[7][82] = 1
+ VarIndex = 83 ; _data[7][83] = 1
+ VarIndex = 84 ; _data[7][84] = 1
+ VarIndex = 85 ; _data[7][85] = 1
+ VarIndex = 86 ; _data[7][86] = 1
+ VarIndex = 87 ; _data[7][87] = 1
+ VarIndex = 88 ; _data[7][88] = 1
+ VarIndex = 89 ; _data[7][89] = 1
+ VarIndex = 90 ; _data[7][90] = 1
+ VarIndex = 91 ; _data[7][91] = 1
+ VarIndex = 92 ; _data[7][92] = 1
+ VarIndex = 93 ; _data[7][93] = 1
+ VarIndex = 94 ; _data[7][94] = 1
+ VarIndex = 95 ; _data[7][95] = 1
+ VarIndex = 96 ; _data[7][96] = 1
+ VarIndex = 97 ; _data[7][97] = 1
+ VarIndex = 98 ; _data[7][98] = 1
+ VarIndex = 99 ; _data[7][99] = 1
 le chasseur se trouve a la position : ( 10 , 8 ) ; reellement : ( 100 , 80 )
 X = 10 ; Y = 8
 le modele du Gardien n(1) = Lezard
 pour le 2eme modele blade , tmpModel devient :  Blade
+PS C:\Users\Riados\Documents\cstrike game c++ project>  
