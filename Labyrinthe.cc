@@ -18,20 +18,26 @@ Labyrinthe::Labyrinthe (char* filename)
 	//char** createMatrix(char* M[],int length);
 	cout <<"**********Game Log**********" <<endl ;
 	
-	int N=5;
+	//int N=5;
 	
 	//I have defined a mapMatrix variable "M" , on Labyrinthe.h
 	//"M" is defined as char **M;
-	M=createMatrix(M,N);
+	M=createMatrix(M,LAB_WIDTH,LAB_HEIGHT);
 	//only works this way , so that : 
 	//the matrix is dynamically created  & then saved this way 
     //it ain't work as a void function ! 
        
 	
-	/* 
-	string value=M[0][0];
-	cout << "inside main M[0][0] = " << value <<endl;  
+	
+
+
+	/*  	
+	string value=M[1][3];
+	cout << "inside main M[1][3] = " << value <<endl;
 	*/
+
+
+	
 	
     
 	
@@ -48,13 +54,48 @@ Labyrinthe::Labyrinthe (char* filename)
 	+      +
 	*/
 	
+	//Now , I'm gonna initialize the matrix ! 
+	int X_Size=width();
+	int Y_Size=height(); 	
+ 
+	M=MatrixInitializer(M, X_Size, Y_Size); 
+
+/* 
+	cout << "M[1][1] ='"<<M[1][1]<<"' M[1][1]==' ' ? answer = ";
+	cout << (M[1][1]==" ")<<endl;  
+*/	
+
+/*
+<MAIN CHECKPOINT 1 : "reached">
+*/
+	
+	showMatrix(M);
+/*
+<MAIN CHECKPOINT 2 : "reached">
+*/
+
+
+
+
+	for (int i = 0; i <= LAB_WIDTH; ++i)
+	for (int j = 0; j <= LAB_HEIGHT; ++j) {
+		if (i == 0 || i == LAB_WIDTH || j == 0 || j == LAB_HEIGHT)
+			_data [i][j] = 1; 
+		else
+			_data [i][j] = EMPTY;
+	}
+
 	// les 4 murs.
-	static Wall walls [] = {
-		{ 0, 0, LAB_WIDTH-1, 0, 0 },//wall horizentale el fou9
-		{ LAB_WIDTH-1, 0, LAB_WIDTH-1, LAB_HEIGHT-1, 0 },//wall vertical 3al limin
-		{ LAB_WIDTH-1, LAB_HEIGHT-1, 0, LAB_HEIGHT-1, 0 },//wall horizentale el louta
-		{ 0, LAB_HEIGHT-1, 0, 0, 0 },//wall vertical 3al lisar 
-		{3,20,3,10,0}
+
+	//if the mapSize=100 ; 
+	//max number of walls == 100² == 10000
+	static Wall walls [10000] = {
+/* 		
+{ 0, 0, LAB_WIDTH-1, 0, 0 },//wall horizentale el fou9
+{ LAB_WIDTH-1, 0, LAB_WIDTH-1, LAB_HEIGHT-1, 0 },//wall vertical 3al limin
+{ LAB_WIDTH-1, LAB_HEIGHT-1, 0, LAB_HEIGHT-1, 0 },//wall horizentale el louta
+{ 0, LAB_HEIGHT-1, 0, 0, 0 }//wall vertical 3al lisar  
+*/
 		
 	};//end of assignement 
 	//walls is an Array of Wall , 
@@ -62,6 +103,208 @@ Labyrinthe::Labyrinthe (char* filename)
 
 	//this type of wall : {6,20,4,10,0} 
 	//wouldn't be displayed ! 
+	
+	//let's block the summoned wall in here !  
+
+	//in testing , via labyrinthe.cc version 0 
+	/*
+
+	Initialising 4 Walls
+
+	struct* wall walls={insert 4 walls here }
+
+
+	*/
+
+	_nwall=0 ; //reference to the 4 created walls 
+	//	(length-1) , is for the counter ! 
+
+	walls[_nwall]={3,20,3,10,0};
+//testing the code 
+//if code works : then check this as a checkpoint 
+//& move to the next milestone ! 
+//added _nwall++ to make it work !  
+//checking code validity ... 
+/*
+< checkpoint 1 : works fine ! >
+*/
+
+
+//let's access the new wall  
+//in order to do that , 
+//we need to keep in mind that  , 
+//the walll definition goes as : 
+/* 
+struct Wall 
+{
+  int	_x1, _y1;	// point de depart.
+  int	_x2, _y2;	// point d'arrivée.
+  int	_ntex;		// numéro de texture.
+}; 
+*/
+int x1,y1,x2,y2; 
+Wall CurrentWall=walls[_nwall];
+x1=CurrentWall._x1; 
+y1=CurrentWall._y1; 
+x2=CurrentWall._x2; 
+y2=CurrentWall._y2; 
+//first test (x1,y1,x2,y2) ; 
+cout <<"blocking walls s' First test :\n";
+cout << "x1 = "<<x1;
+cout << "; y1 = "<<y1;
+cout << "; x2 = "<<x2;
+cout << "; y2 = "<<y2<<endl;
+
+
+
+//checking test 1 ...
+//test 1 : "works"
+
+int _ConstAxe; //ConstAxe is supposed to be the x or y that remains the same 
+int startIndex,EndIndex ; 
+bool condition=false; 
+  if(x1==x2)
+  {
+  _ConstAxe=x1 ;// X is the constant Axe 
+  startIndex=y1;
+  EndIndex=y2;
+  condition = true ; // move on Y 
+
+
+  }
+  else
+  {
+  //move on X 
+  _ConstAxe=y1 ; //Y is the constant Axe ; 
+  startIndex=x1;
+  EndIndex=x2;
+  }//end if 
+
+//test 2(_ConstAxe,startIndex,EndIndex,condition) 
+cout << "_ConstAxe = "<<_ConstAxe; 
+cout << " ; startIndex = "<<startIndex; 
+cout << " ; EndIndex = "<<EndIndex; 
+cout << " ; Conditon = "<<condition<< "\n"; 
+
+
+//checking test2 
+//test 2 : "works fine !"  
+
+
+
+  //if(x1==x2)
+  //=>_ConstAxe=x1 ;// X is the constant Axe 
+  //startIndex=y1;
+  //EndIndex=y2;
+  //condition = true ; // move on Y 
+  //else 
+  //move on X 
+  //_ConstAxe=y1 ; //Y is the constant Axe ; 
+  //startIndex=x1;
+  //EndIndex=x2;
+  //end if 
+
+/*
+if successful ; 
+make checkpoint ; 
+& move to next milestone ; 
+*/
+
+/*
+< checkpoint 2 : "reached" > 
+*/
+
+  
+if(startIndex>EndIndex)
+{
+ x1=startIndex ; //x1 is temp here ! 
+ startIndex=EndIndex ; 
+ EndIndex=x1;  
+}//end if 
+
+//test3(startIndex,EndIndex)
+
+cout << "after Revision ^_^ \n";
+cout << "startIndex = "<<startIndex; 
+cout << " ; EndIndex = "<<EndIndex<<endl; 
+
+
+//test3 : "works fine !"
+
+/*
+fix things  so that the loop would make sense ! 
+
+
+//make it that it works that way 
+*/
+for(int VarIndex=startIndex;VarIndex<=EndIndex;VarIndex++) 
+//for besh tmshi dima 3ala axe constant eli howa représenté par _ConstAxe ;
+ 
+{
+
+//test4 : testing the loop	
+
+cout <<" VarIndex = " << VarIndex ; 
+
+	if(condition)// move on Y 
+	{  
+	_data[_ConstAxe][VarIndex]=1 ; 
+	
+	cout <<" ; _data["<<_ConstAxe<<"]["<<VarIndex<<"] = ";
+	cout << (_data[_ConstAxe][VarIndex]!=EMPTY)<<endl ; 
+	
+	}
+	else //move on X 
+	{  
+	_data[VarIndex][_ConstAxe]=1 ; 
+
+	cout <<" ; _data["<<VarIndex<<"]["<<_ConstAxe<<"] = ";
+	cout << (_data[VarIndex][_ConstAxe]!=EMPTY)<<endl ;
+
+	}//end if 
+	
+
+ 
+
+//test 4 : "reached"
+}
+//make it that it works that way 
+
+/*
+
+if successful 
+
+make checkpoint ! 
+
+checking current wall value ! 
+
+*/
+
+
+/*
+<checkpoint 3 - "reached" >
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	// une affiche.
 	//  (attention: pour des raisons de rapport d'aspect,
@@ -96,19 +339,19 @@ Labyrinthe::Labyrinthe (char* filename)
 /* FIN - NOUVEAU */
 
 	// juste un mur autour et les 3 caisses et le trésor dedans.
-	for (int i = 0; i < LAB_WIDTH; ++i)
-		for (int j = 0; j < LAB_HEIGHT; ++j) {
-			if (i == 0 || i == LAB_WIDTH-1 || j == 0 || j == LAB_HEIGHT-1)
-				_data [i][j] = 1;
-			else
-				_data [i][j] = EMPTY;
-		}
+
 	// indiquer qu'on ne marche pas sur une caisse.
 	_data [caisses [0]._x][caisses [0]._y] = 1;
 	_data [caisses [1]._x][caisses [1]._y] = 1;
 	_data [caisses [2]._x][caisses [2]._y] = 1;
 	// le nombre des murs.
-	_nwall = 5;
+	//remove _nwall = 5 ; 
+/*
+ 	_nwall = 5;//now I'm a comment
+*/	//_nwall s' assignement by constant value , got removed !  
+	_nwall++; //so that _nwall matches the final length of the walls 
+	//it was replaced by _nwall ++ 
+
 	_walls = walls;
 	// deux affiches.
 	_npicts = 2;
@@ -186,8 +429,8 @@ Labyrinthe::Labyrinthe (char* filename)
 	//strcpy(tmpModel,_models[5].c_str());
 
 	_guards [5] = new Gardien (this,_models[5].c_str() );
-	 _guards [5] -> _x = 170.;
-	 _guards [5] -> _y = 140.;
+	_guards [5] -> _x = 170.;
+	_guards [5] -> _y = 140.;
 	
 
 
