@@ -138,6 +138,192 @@ public:
 	
 	}//end of function
 
+	void MapInitializer()
+	{
+
+	//this is made to initialize the map 
+	//making the map Limits untouchable 
+		for (int i = 0; i <= LAB_WIDTH; ++i)
+			for (int j = 0; j <= LAB_HEIGHT; ++j) 
+			{
+				if (i == 0 || i == LAB_WIDTH || j == 0 || j == LAB_HEIGHT)
+					_data [i][j] = 1; 
+				else
+					_data [i][j] = EMPTY;
+				//end if 
+			}//end for j 
+		//end for i 
+
+
+
+
+
+
+		
+	}//end of function ! 
+
+	void WallBlocker()
+	{
+		for(int Wall_Id=0;Wall_Id<_nwall;Wall_Id++)
+	
+		{	
+		//let's access the new wall  
+		//in order to do that , 
+		//we need to keep in mind that  , 
+		//the walll definition goes as : 
+		/* 
+		struct Wall 
+		{
+		int	_x1, _y1;	// point de depart.
+		int	_x2, _y2;	// point d'arrivée.
+		int	_ntex;		// numéro de texture.
+		}; 
+		*/
+		int x1,y1,x2,y2; 
+		Wall CurrentWall=_walls[Wall_Id];
+		x1=CurrentWall._x1; 
+		y1=CurrentWall._y1; 
+		x2=CurrentWall._x2; 
+		y2=CurrentWall._y2; 
+		//first test (x1,y1,x2,y2) ; 
+		cout <<"blocking walls s' First test :\n";
+		cout << "x1 = "<<x1;
+		cout << "; y1 = "<<y1;
+		cout << "; x2 = "<<x2;
+		cout << "; y2 = "<<y2<<endl;
+
+
+
+		//checking test 1 ...
+		//test 1 : "works"
+
+		int _ConstAxe; //ConstAxe is supposed to be the x or y that remains the same 
+		int startIndex,EndIndex ; 
+		bool condition=false; 
+		if(x1==x2)
+		{
+		_ConstAxe=x1 ;// X is the constant Axe 
+		startIndex=y1;
+		EndIndex=y2;
+		condition = true ; // move on Y 
+
+
+		}
+		else
+		{
+		//move on X 
+		_ConstAxe=y1 ; //Y is the constant Axe ; 
+		startIndex=x1;
+		EndIndex=x2;
+		}//end if 
+
+		//test 2(_ConstAxe,startIndex,EndIndex,condition) 
+		cout << "_ConstAxe = "<<_ConstAxe; 
+		cout << " ; startIndex = "<<startIndex; 
+		cout << " ; EndIndex = "<<EndIndex; 
+		cout << " ; Conditon = "<<condition<< "\n"; 
+
+
+		//checking test2 
+		//test 2 : "works fine !"  
+
+
+
+		//if(x1==x2)
+		//=>_ConstAxe=x1 ;// X is the constant Axe 
+		//startIndex=y1;
+		//EndIndex=y2;
+		//condition = true ; // move on Y 
+		//else 
+		//move on X 
+		//_ConstAxe=y1 ; //Y is the constant Axe ; 
+		//startIndex=x1;
+		//EndIndex=x2;
+		//end if 
+
+		/*
+		if successful ; 
+		make checkpoint ; 
+		& move to next milestone ; 
+		*/
+
+		/*
+		< checkpoint 2 : "reached" > 
+		*/
+
+		
+		if(startIndex>EndIndex)
+		{
+		x1=startIndex ; //x1 is temp here ! 
+		startIndex=EndIndex ; 
+		EndIndex=x1;  
+		}//end if 
+
+		//test3(startIndex,EndIndex)
+
+		cout << "after Revision ^_^ \n";
+		cout << "startIndex = "<<startIndex; 
+		cout << " ; EndIndex = "<<EndIndex<<endl; 
+
+
+		//test3 : "works fine !"
+
+		/*
+		fix things  so that the loop would make sense ! 
+
+
+		//make it that it works that way 
+		*/
+		for(int VarIndex=startIndex;VarIndex<=EndIndex;VarIndex++) 
+		//for besh tmshi dima 3ala axe constant eli howa représenté par _ConstAxe ;
+		
+		{
+
+		//test4 : testing the loop	
+
+		cout <<" VarIndex = " << VarIndex ; 
+
+			if(condition)// move on Y 
+			{  
+			_data[_ConstAxe][VarIndex]=1 ; 
+			
+			cout <<" ; _data["<<_ConstAxe<<"]["<<VarIndex<<"] = ";
+			cout << (_data[_ConstAxe][VarIndex]!=EMPTY)<<endl ; 
+			
+			}
+			else //move on X 
+			{  
+			_data[VarIndex][_ConstAxe]=1 ; 
+
+			cout <<" ; _data["<<VarIndex<<"]["<<_ConstAxe<<"] = ";
+			cout << (_data[VarIndex][_ConstAxe]!=EMPTY)<<endl ;
+
+			}//end if 
+			
+
+		
+
+		//test 4 : "reached"
+		}//end of for VarIndex ;
+		//make it that it works that way 
+
+		/*
+
+		if successful 
+
+		make checkpoint ! 
+
+		checking current wall value ! 
+
+		*/
+
+
+		/*
+		<checkpoint 3 - "reached" >
+		*/
+
+		}//end of for WallId
+	;}//end of function
 
 };//end of class Labyrinthe
 
