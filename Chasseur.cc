@@ -42,7 +42,7 @@ bool Chasseur::move_aux (double dx, double dy)
  *	Fait bouger la boule de feu (ceci est une exemple, � vous de traiter les collisions sp�cifiques...)
  */
 
-bool Chasseur::process_fireball (float dx, float dy)
+	bool Chasseur::process_fireball (float dx, float dy)
 {
 	// calculer la distance entre le chasseur et le lieu de l'explosion.
 	float	x = (_x - _fb -> get_x ()) / Environnement::scale;
@@ -63,33 +63,14 @@ bool Chasseur::process_fireball (float dx, float dy)
 		
 		/// Guardien Touché par ball ...c'est à dire il y'a  croissement des coordonnées(x,y) du Fireball & coordonnées du gardien (x,y) 
 	//_l->data() = 1 cad  on vient de pércuter un obstacle
-
-	if ( (  ( (int)(_l -> _guards [1] -> _x / Environnement::scale) == (int)(_fb -> get_x () + dx)/ Environnement::scale ) ) && ( ((int)(_l -> _guards [1] -> _y/ Environnement::scale )) == ( (int) ( (_fb -> get_y () + dy)/ Environnement::scale ) ) ) )
+	for (int i = 1; i <_l->_nguards; i++)
 	{
-		message ( "  Gardien 1 touché Position Gardien = %d,  Position Fireball = %d, dx =%d  ",(int)(_l -> _guards [2] ->_x )/ Environnement::scale ,(int)(_fb -> get_x () +dx) / Environnement::scale);
-		//int G_HP -= 30;
-		//-HP for gards
-	}
-
-	if ( (  ( (int)(_l -> _guards [2] -> _x / Environnement::scale) == (int)(_fb -> get_x () + dx)/ Environnement::scale ) ) && ( ((int)(_l -> _guards [2] -> _y/ Environnement::scale )) == ( (int) ( (_fb -> get_y () + dy)/ Environnement::scale ) ) ) )
-	{
-		message ( "  Gardien 2 touché Position Gardien = %d,  Position Fireball = %d, dx =%d  ",(int)(_l -> _guards [2] ->_x )/ Environnement::scale ,(int)(_fb -> get_x () +dx) / Environnement::scale);
-		//_l -> _guards [2]-> G_HP -= 30;
-		//-HP for gards
-	}
-
-	if ( (  ( (int)(_l -> _guards [3] -> _x / Environnement::scale) == (int)(_fb -> get_x () + dx)/ Environnement::scale ) ) && ( ((int)(_l -> _guards [3] -> _y/ Environnement::scale )) == ( (int) ( (_fb -> get_y () + dy)/ Environnement::scale ) ) ) )
-	{
-		message ( "  Gardien 3 touché Position Gardien = %d,  Position Fireball = %d, dx =%d  ",(int)(_l -> _guards [2] ->_x )/ Environnement::scale ,(int)(_fb -> get_x () +dx) / Environnement::scale);
-		//_l -> _guards [3]-> G_HP -= 30;
-		//-HP for gards
-	}
-
-	if ( (  ( (int)(_l -> _guards [4] -> _x / Environnement::scale) == (int)(_fb -> get_x () + dx)/ Environnement::scale ) ) && ( ((int)(_l -> _guards [4] -> _y/ Environnement::scale )) == ( (int) ( (_fb -> get_y () + dy)/ Environnement::scale ) ) ) )
-	{
-		message ( "  Gardien 4 touché Position Gardien = %d,  Position Fireball = %d, dx =%d  ",(int)(_l -> _guards [2] ->_x )/ Environnement::scale ,(int)(_fb -> get_x () +dx) / Environnement::scale);
-		//_l -> _guards [4]-> G_HP -= 30;
-		//-HP for gards
+		if ( (  ( (int)(_l -> _guards [i] -> _x / Environnement::scale) == (int)(_fb -> get_x () + dx)/ Environnement::scale ) ) && ( ((int)(_l -> _guards [i] -> _y/ Environnement::scale )) == ( (int) ( (_fb -> get_y () + dy)/ Environnement::scale ) ) ) )
+		{
+			message ( "    Gardien %d touché Position Gardien = %d,  Position Fireball = %d, dx =%d  ",i,(int)(_l -> _guards [2] ->_x )/ Environnement::scale ,(int)(_fb -> get_x () +dx) / Environnement::scale);
+			//int G_HP -= 30;
+			//-HP for gards
+		}
 	}
 	// calculer la distance maximum en ligne droite.
 	float	dmax2 = (_l -> width ())*(_l -> width ()) + (_l -> height ())*(_l -> height ());
@@ -141,9 +122,16 @@ void Chasseur::HP_Reg ()
 	message ("Live = %d",HP);
 	int counter = Time_Reg;
 		do {/*TIMER pour regener le Capital de Vie*/ } while(counter < Time_Reg );
-		HP+=20;
+		HP+=10;
 	message ("HP +20  , HP = %d",HP);
 }
 	
+/*void Chasseur::update(void)
+{
+	if ( ( (int)(_x / Environnement::scale) ) == ( (int)(_l->_treasor->_x/ Environnement::scale) ) ) 
+	{
 
+	}
+
+}*/
 	
