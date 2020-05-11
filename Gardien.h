@@ -5,6 +5,7 @@
 #include "math.h"
 #include "Mover.h"
 #include "Sound.h"
+#include "stdio.h"
 #include "Labyrinthe.h"
 #include "Chasseur.h"
 
@@ -14,14 +15,16 @@
 #define Time_Reg_Init 110000000 // Temps qu'il faut pour augmenter le capital vie
 #define FireBall_Damage_Init 25 //Damage effecuté par la fireball
 
+
 class Labyrinthe;
 
 class Gardien : public Mover {
 
 private :
+	bool CanFireball ;
 	bool move_patrouille (double dx, double dy) ;//{return false;};
-	bool move_defence (double dx, double dy) ;// accepte ou non un deplacement.
-	
+
+
 public:
 	Sound*	_hunter_fire;	// bruit de l'arme du chasseur.
 	Sound*	_hunter_hit;	// cri du chasseur touch�.
@@ -31,7 +34,7 @@ public:
 	int G_HP					= HP_Init;			 		//Initialiser le capitale de vie 
 	int G_Time_Reg				= Time_Reg_Init; 	    	//Initialiser le temps de regéneration du capitale de vie 
 	int G_HP_FireBall_Damage	= FireBall_Damage_Init ;    //Initialiser le dégat causé par le Fire Ball
-
+	int HP_Deminue 				= 0;
 	Gardien (Labyrinthe* l, const char* modele);
 	
 	//~Gardien();
@@ -48,7 +51,7 @@ public:
 	
 	bool Rotate(double dx,double dy,double RX,double RY);
 
-
+	bool attaque  () ;// Attaque le chasseur.
 	//void right_click (bool shift, bool control) { };
 };
 
