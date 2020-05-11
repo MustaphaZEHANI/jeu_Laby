@@ -90,46 +90,134 @@ void Gardien::fire (int angle_vertical)
 		_l -> _guards [0] -> rester_au_sol ();
 	else
 		_l -> _guards [0] -> tomber ();
-
 }*/
 //int i = 1;
 bool Gardien::move_patrouille (double dx, double dy)
 {
 
-int angle=this->_angle; 
+int angle=_angle; 
 
 /*rotatedX = ((x - x_origin)*cos(angle))-((y_origin - y)*sin(angle))+x_origin
   rotatedY = ((y_origin - y)*cos(angle))-((x - x_origin)*sin(angle))+y_origin
 */
-float distX=dx/100; 
-float distY=dy/100;
-float rotatedX = _x + cos(angle* PI/180)*distX - sin(angle* PI/180)*distY;
-float rotatedY = _y + cos(angle* PI/180)*distX - sin(angle* PI/180)*distY;
+bool condition=true;
+float rotatedX,rotatedY;
+    
 
-//message("angle = %d ; X = %f, rotatedX =%f  , rotatedY = %f",_angle ,_x ,rotatedX,rotatedY); 	
-	if (EMPTY == _l -> data ((int)((rotatedX + dx) / Environnement::scale),
-							 (int)((rotatedY + dy ) / Environnement::scale)))
+
+float distX=dx/50; 
+float distY=dy/50;
+
+    rotatedX = _x + cos(angle* PI/180)*distX - sin(angle* PI/180)*distY;
+    rotatedY = _y + cos(angle* PI/180)*distX + sin(angle* PI/180)*distY;
+
+    //message("angle = %d ; X = %f, rotatedX =%f  , rotatedY = %f",_angle ,_x ,rotatedX,rotatedY); 	
+    int rotationX=(int)(rotatedX+dx )/ Environnement::scale;
+    int rotationY=(int)(rotatedY+dy  )/ Environnement::scale;
+     
+    condition=EMPTY == _l -> data (rotationX,rotationY);
+   
+     
+    //--------------------------------
+
+/*      
+int rotationX2=(int)(rotatedX+dx/10)/ Environnement::scale;
+int rotationY2=(int)(rotatedY+dy/10)/ Environnement::scale;
+bool condition2=EMPTY == _l -> data (rotationX2,rotationY2);
+*/
+    float ValueX,ValueY;
+    
+    ValueX=(rotatedX-_x);
+    if (ValueX==0)
+    ValueX+=distX;
+
+
+
+    ValueY=(rotatedY-_y);
+    if (ValueY==0)
+    ValueY+=distY; 
+
+
+
+
+     
+    if ( Rotate(dx,dy,rotatedX,rotatedY) )
+							 
 	{
 		//message("Guards walk... withou blocking.. no WALL .......");
 		//if ()
 
-		_x = rotatedX ;  // Mise à jour de la valeur de x
-		_y = rotatedY ;  // Mise à jour de la valeur de y
+        //if empty==data(Rotation[d(x,y)/100])
+        /*
+        -- x -
+        | oio|1
+        f  o  2
+        find the common axe !
+        move on variable axe !
+        */
+        
+/*         _x = rotatedX; // Mise à jour de la valeur de x
+        _y = rotatedY;// Mise à jour de la valeur de y */
+
+
+        //-----------------
+        /* dx/=2;
+        dy/=2; */
+
+    //-------------------
+
+
+        message("Inside Rotate1");
+
+
+
 		//_L->_data [(int)(_x / Environnement::scale)][(int)(_y / Environnement::scale)] = 1;
 		return true;
-	}
+    }
+    else if (Rotate(dx/10,dy/10,rotatedX,rotatedY)   )
+    {
+ /*    _x = rotatedX; // Mise à jour de la valeur de x
+    _y = rotatedY; */
+    
+    message("Inside Rotate2");
+
+    return true;
+
+    }
+    
+    else if (Rotate(distX,distY,rotatedX,rotatedY))
+    {
+    message("Inside Rotate3");
+
+    return true;
+    }
+
 		else  /// Le gardien se trouve devant un Objet ou un Mur.. Il doit changer de direction !!
 	{		
-		message("WALL ....... !!");
-		int  angle_Rand = ( rand() % 360 ) + 1 ; // Génèration d'un angle alèatoire 
-		_angle += angle_Rand ;
-		_x = rotatedX ;  // Mise à jour de la valeur de x
-		_y = rotatedY ;  // Mise à jour de la valeur de y
+         
+        _angle =rand()%360+1 ;//44 backward ! ; 
+     
+        
+/*       dx*=20;
+      dy*=20; */
+   
+/*  
+    rotatedX = _x + cos(angle* PI/180)*distX - sin(angle* PI/180)*distY;
+    rotatedY = _y + cos(angle* PI/180)*distX - sin(angle* PI/180)*distY;
+
+    _x=rotatedX;
+    _y=rotatedY;  
+*/
+
+
+
+      //  message("angle = %d,valueX = %f , valueY = %f , dx =%f , dy=%f ",_angle,ValueX,ValueY,dx,dy);
 
 		return true;
-	}
+    } 
 
-	return false;
+
+	
 	
 }
 
@@ -149,10 +237,43 @@ bool Gardien::move (double dx, double dy)
 	/* Le gardien Pense */
 void Gardien::update (void)
 {
-	double x=15, y=15; // x et y sont le pas de dépassement du gardien 
+	double x=10, y=10; // x et y sont le pas de dépassement du gardien 
 	//message ("Wall.. x= %d , y=%d",x,y);
 	move(x,y); //Le gardien Marche
 	//fire(1);
 
 }
-	
+
+
+bool Gardien::	Rotate(double dx,double dy,double RX,double RY)
+{
+
+/*
+int angle=_angle ; 
+
+float rotatedX = _x + cos(angle* PI/180)*distX - sin(angle* PI/180)*distY;
+float rotatedY = _y + cos(angle* PI/180)*distX - sin(angle* PI/180)*distY; 
+*/
+
+int rotationX=(int)(RX+dx )/ Environnement::scale;
+int rotationY=(int)(RY+dy  )/ Environnement::scale;
+    
+
+bool condition=EMPTY == _l -> data (rotationX,rotationY);
+
+    if(condition)
+    {
+
+    _x=RX;
+    _y=RY;
+
+    return true;    
+    }
+    else
+    {
+
+    return false;
+    }
+
+
+}
