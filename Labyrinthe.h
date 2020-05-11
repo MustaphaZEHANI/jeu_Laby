@@ -3,6 +3,9 @@
 
 #include "Environnement.h"
 #include <iostream>
+#include <fstream>
+#include <stdlib.h>  
+#include <time.h>  
 using namespace std;
 #define	LAB_WIDTH	100 //80
 #define	LAB_HEIGHT	100//25
@@ -12,6 +15,7 @@ private:
 	char	_data [LAB_WIDTH][LAB_HEIGHT];
 
 public:
+	char _Data[LAB_WIDTH][LAB_HEIGHT]={};
 	Labyrinthe (char*);
 	int width () { return LAB_WIDTH;}	// retourne la largeur du labyrinthe.
 	int height () { return LAB_HEIGHT;}	// retourne la longueur du labyrinthe.
@@ -33,7 +37,7 @@ public:
 	int x=X_Size;
 	int y=Y_Size; 
 	M = new string*[x];
-		for (int i = 0; i < y; i++)
+		for (int i = 0; i < x; i++)
 		M[i] = new string[y];
 	
 
@@ -86,7 +90,7 @@ public:
 	return _StringArray;
 	}//end of function ! 
 
-	string** MatrixInitializer(string* M[],int X_Size,int Y_Size)
+	void MatrixInitializer(string* M[],int X_Size,int Y_Size)
 	{
 	//gonna fill 'them matrix with "a"
 	int x=X_Size; 
@@ -100,8 +104,11 @@ public:
 			//the correct thing is : M[i][j]=" ";
 			}//end for j
 		}//end for i
-
-	return M;
+/* 	
+	string value=M[1][6];
+	cout <<"M[1] ["<<6 <<"] = '" << value<<"'" <<endl; 
+*/
+	//return M;
 	//this function is made to initialize the map matrix , 
 	//through spaces that are neutral elements , 
 	//in the matrix ! 
@@ -140,22 +147,26 @@ public:
 
 	void MapInitializer()
 	{
-
+	
+	int X=width(); 
+	int Y=height();
 	//this is made to initialize the map 
 	//making the map Limits untouchable 
-		for (int i = 0; i <= LAB_WIDTH; ++i)
-			for (int j = 0; j <= LAB_HEIGHT; ++j) 
+		for (int i = 0; i <= X-1; ++i)
+			for (int j = 0; j <= Y-1; ++j) 
 			{
-				if (i == 0 || i == LAB_WIDTH || j == 0 || j == LAB_HEIGHT)
-					_data [i][j] = 1; 
+				if (i == 0 || i == X-1 || j == 0 || j == Y-1 )
+					_Data [i][j] = 1; 
+				/* 
 				else
-					_data [i][j] = EMPTY;
+					_Data [i][j] = EMPTY;
+				 */
 				//end if 
 			}//end for j 
 		//end for i 
+			
 
-
-
+	
 
 
 
@@ -324,6 +335,330 @@ public:
 
 		}//end of for WallId
 	;}//end of function
+	
+	void BoxBlocker()
+	{
+	int x,y;		
+		for( int i=0;i<_nboxes;i++)
+		{
+		Box BoxObject = _boxes[i] ; 
+		x=	BoxObject._x; 
+		y=BoxObject._y; 
+		_data[x][y]=1;
+		}//end of for
+	
+	//_data [caisses [counter]._x][caisses [counter]._y] = 1;
+	
+
+
+
+
+
+
+
+
+
+
+
+	}//end of function 
+
+
+	void fromFileToMapMatrix(string *M[],char* filename) 
+	{
+	ifstream inFile;
+	//int X_Size=LAB_WIDTH;
+	int Y_Size=LAB_HEIGHT;
+	
+
+
+
+	inFile.open(filename); 
+
+		if (!inFile) 
+		{
+			cerr << "Unable to open file : "<<filename;
+			exit(1);   // call system to stop
+		}//end if 
+	cout << "Reading the file : "<<filename<<endl;
+	string     tmp="0";
+	string fileContent;
+	string *TxtLine;
+	int Line=-1; 
+	int x;
+	
+
+
+	cout << "____________________Inside File____________________"<<endl; 
+		
+
+		
+		while ( getline(inFile, fileContent) ) 
+		{ 
+		++Line;
+		if(Line < 10)
+		cout << tmp;
+		//end if 
+
+
+			if(Line>5)
+			{//in here we can browse the values ; 
+			char charArray[Y_Size-1]; 
+			
+			strcpy(charArray,fileContent.c_str());
+			x=Line-5; 
+			TxtLine=fromCharArrayToStringArray(charArray,Y_Size);
+			M[x]=TxtLine;
+			//fix this ! 
+
+			/*on a réalisé un décallage nécessaire dans la fonction 
+			fromchar*toString*
+			*/
+			}//end if 
+
+		cout<<Line<<"   ]" << fileContent <<endl;
+		}//end of while ! 
+
+	inFile.close(); 
+
+	cout << "____________________End of File____________________"<<endl; 
+
+
+	}//end of function ReadFileIntoMatrix
+	
+	void from2D_MapMatrixto3D_Map(string* M[])
+	{
+	/* 
+		parent function -> 
+		*ArrayOfModels
+		*ArrayOfBoxSkins
+		*ArrayOfMarkSkins
+		
+		T : Treasure 
+		C : chasseur    
+		G : guerrier 
+		x : mark / Boxes
+		+ : wall_pointer !
+		
+		extraction function ->
+		a : affiche1 
+		b : affiche 2 <- bSkin
+	*/
+	int X_Size=LAB_WIDTH ;
+	int Y_Size=LAB_HEIGHT;
+	
+	string Models[]=
+		{
+		"Lezard","Blade","Serpent",
+		"Samourai","Marvin","Potator",
+		"garde"
+		};
+	int N_Models=7 ; 
+	srand (time(NULL));
+	
+	int Random_Model_Index=rand()%N_Models;
+	string wallSymbol="+-|ab";
+	string H_wallSymbol="+-ab"; 
+	//string V_wallSymbol="+|ab";
+
+	//cout << "Random_Model_Index == "<<Random_Model_Index<<endl;
+	//generates a value [0,N_Models-1]
+	cout << "_________________Inside Final Function_________________\n"; 
+	_walls ={} ; 
+	_nwall=-1;
+	// deux affiches.
+	_npicts = -1;
+	
+	static Wall affiche [10000];
+
+	bool condition ; 
+	
+
+	static Wall walls [10000];
+
+		for(int x=1;x<X_Size;x++)
+		{
+			for(int y=1;y<Y_Size;y++)
+			{
+			string element=M[x][y] ; 
+/* 
+			=false ; 
+			
+				while(element==" "&&!condition)
+				{
+					if(x==X_Size-1)
+					condition=true;
+					else
+					++x;
+					
+				element=M[x][y];    
+				}//end of while  
+*/
+				
+				
+
+				//
+				//element=="+"||element=="-"|| element=="|"||element=="a"||element=="b"
+				if(wallSymbol.find(element)!=string::npos)
+				{
+					
+				++_nwall;
+				
+
+					if(element=="|")
+					{//vertical Wall : if "|" = matrixElement
+
+					
+					walls[_nwall]={x,y,x+1,y,0};
+					cout << "wall number ("<< _nwall<<") having x = "<<x<<" ; y = "<<y<<endl;
+					}
+					else 
+					{//element belongs to HorizentalSymbols 
+					//equals : if (H_wallSymbol.find(element)!=string::npos)
+					//element belongs to "ab-+"
+					string BannerSymbols="ab"; 
+						if(BannerSymbols.find(element)!=string::npos)
+						{		
+						++_npicts;
+						
+						affiche[_npicts]={x,y,x,y+1,0};
+						++_nwall; 
+						walls[_nwall]=affiche[_npicts];
+							if(element=="b")
+							{
+							char	tmp [128];
+							sprintf (tmp, "%s/%s", texture_dir, "affiche 2_b.jpg");
+							affiche [_npicts]._ntex = wall_texture (tmp);
+							}//end if element is b ; 
+
+						}//end if element is a banner 			
+
+						else //element isn't a banner -> element is a wall ! 
+						{
+						walls[_nwall]={x,y,x,y+1,0};
+						cout << "wall number ("<< _nwall<<") having x = "<<x<<" ; y = "<<y<<endl;
+						}
+						
+
+
+/* 	
+					char	tmp [128];
+					sprintf (tmp, "%s/%s", texture_dir, "affiche 2_b.jpg");
+					affiche [_npicts]._ntex = wall_texture (tmp);
+*/
+					
+
+
+
+
+
+/* 						
+						bool condition1,condition2;	
+	
+						string nextX=M[x+1][y];
+						string previousX=M[x-1][y];
+	
+						condition1=(H_wallSymbol.find(previousX)!=string::npos);
+						condition2=(H_wallSymbol.find(nextX)!=string::npos);
+						
+						condition=condition1&&condition2; 
+							
+						if(condition)
+						//if element is horizental ! 
+						{
+						cout <<"this wall element is 'horizental' element = with a position of (";
+						cout << x <<","<< y <<" ) \n";
+						cout << "Proof to this : check The map at that position\n";
+						cout <<"______________________________________________________\n";
+						}
+						else
+						{//element is vertical 
+						cout <<"this wall element is 'vertical' element = with a position of (";
+						cout << x <<","<< y <<" ) \n";
+						cout << "Proof to this : check The map at that position\n";
+						cout <<"______________________________________________________\n";
+						} 
+*/
+
+					
+						
+					}//end if element symbol equals a horizental symbol ! 
+					
+
+				}//end if element is part of wallsymbol ! 
+				else if (element=="T")
+				{
+				_treasor._x = x;
+				_treasor._y = y;
+				_Data [x][y] = 1;
+				cout << "le tresor se trouve a : ( "<< x <<" , "<< y <<" ) ";
+				//partie gagné	
+				}
+				
+				
+				
+				
+				
+				
+				else
+				{//if the element isn't a required symbol 
+
+/*  					
+				cout << "this element can't be a wall , cause MatrixElement='";
+				cout <<element <<"'\n"; 
+*/
+				}
+		/* 		
+				else if (element=="C")
+				{
+	
+				}
+				
+				else if (element=="G")
+				{
+	
+				}
+				
+				
+
+				else if (element=="x")
+				{
+	
+				}//end of if 
+				
+	 */
+	
+			}//end of for y ! 
+	
+	
+	
+	
+	
+	
+		}//end of for X
+	++_nwall;
+	++_npicts;
+	_walls=walls;
+	_picts = affiche;
+	cout << "congrats you just turned a 2d text into 3D !\n";
+	cout << "_________________End of Final Function_________________\n"; 
+
+	;}//end of from2D_MapMatrixto3D_Map
+	
+	void Fill_Map_data()
+	{
+	int X=width();
+	int Y=height(); 
+		for(int x=0;x<X;x++)
+		{
+			for(int y=0;y<Y;y++)
+			{
+				_data[x][y]=_Data[x][y];
+			}//end for y
+
+		}//end for x 
+
+	}//end of function
+
 
 };//end of class Labyrinthe
 
