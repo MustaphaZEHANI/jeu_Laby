@@ -197,13 +197,14 @@ public:
 		x2=CurrentWall._x2; 
 		y2=CurrentWall._y2; 
 		//first test (x1,y1,x2,y2) ; 
+/* 	
 		cout <<"blocking walls s' First test :\n";
 		cout << "x1 = "<<x1;
 		cout << "; y1 = "<<y1;
 		cout << "; x2 = "<<x2;
 		cout << "; y2 = "<<y2<<endl;
-
-
+ */
+		//the commented cout is useful for the testing
 
 		//checking test 1 ...
 		//test 1 : "works"
@@ -229,11 +230,13 @@ public:
 		}//end if 
 
 		//test 2(_ConstAxe,startIndex,EndIndex,condition) 
+/* 		
 		cout << "_ConstAxe = "<<_ConstAxe; 
 		cout << " ; startIndex = "<<startIndex; 
 		cout << " ; EndIndex = "<<EndIndex; 
 		cout << " ; Conditon = "<<condition<< "\n"; 
-
+*/
+		//the cout is essential for the test 
 
 		//checking test2 
 		//test 2 : "works fine !"  
@@ -271,12 +274,14 @@ public:
 		}//end if 
 
 		//test3(startIndex,EndIndex)
-
+/* 
 		cout << "after Revision ^_^ \n";
 		cout << "startIndex = "<<startIndex; 
 		cout << " ; EndIndex = "<<EndIndex<<endl; 
+*/
 
-
+		//the cout is essential for the test 
+		
 		//test3 : "works fine !"
 
 		/*
@@ -291,27 +296,29 @@ public:
 		{
 
 		//test4 : testing the loop	
-
+/* 
 		cout <<" VarIndex = " << VarIndex ; 
+*/		
+		//couts are essentials for testing ! 
 
 			if(condition)// move on Y 
 			{  
 			_data[_ConstAxe][VarIndex]=1 ; 
-			
+/* 			
 			cout <<" ; _data["<<_ConstAxe<<"]["<<VarIndex<<"] = ";
 			cout << (_data[_ConstAxe][VarIndex]!=EMPTY)<<endl ; 
-			
+*/			
 			}
 			else //move on X 
 			{  
 			_data[VarIndex][_ConstAxe]=1 ; 
-
+/* 
 			cout <<" ; _data["<<VarIndex<<"]["<<_ConstAxe<<"] = ";
 			cout << (_data[VarIndex][_ConstAxe]!=EMPTY)<<endl ;
-
+*/
 			}//end if 
 			
-
+		//the cout are essentials for testing ! 
 		
 
 		//test 4 : "reached"
@@ -509,7 +516,14 @@ public:
 
 					
 					walls[_nwall]={x,y,x+1,y,0};
+					
+/* 
 					cout << "wall number ("<< _nwall<<") having x = "<<x<<" ; y = "<<y<<endl;
+*/
+
+
+					//this cout is only crucial for testing ! 
+				
 					}
 					else 
 					{//element belongs to HorizentalSymbols 
@@ -535,7 +549,13 @@ public:
 						else //element isn't a banner -> element is a wall ! 
 						{
 						walls[_nwall]={x,y,x,y+1,0};
-						cout << "wall number ("<< _nwall<<") having x = "<<x<<" ; y = "<<y<<endl;
+
+
+
+
+/* 						cout << "wall number ("<< _nwall<<") having x = "<<x<<" ; y = "<<y<<endl;
+*/						
+						//this cout is crucial for testing !
 						}
 						
 

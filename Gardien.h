@@ -46,6 +46,9 @@ public:
 	// quand a faire bouger la boule de feu...
 	bool process_fireball (float dx, float dy); //{ return false; }
 	
+	bool Rotate(double dx,double dy,double RX,double RY);
+
+
 	//void right_click (bool shift, bool control) { };
 };
 

@@ -360,6 +360,9 @@ BoxBlocker() ;
 	_models[1]="Lezard";
 	//strcpy(tmpModel,_models[1].c_str());
 	_guards [1] = new Gardien (this, _models[1].c_str());
+	_guards[1]->_x=100;
+	_guards[1]->_y=140;
+
 	//cout << "le modele du Gardien n(1) = " << _guards[1]->_model  <<endl;
 	//that returns the value of the model on the memory example x0298bf
 	cout << "le modele du Gardien n(1) = " << _models[1] <<endl;
@@ -370,15 +373,15 @@ BoxBlocker() ;
 	cout<<"pour le 2eme modele blade , tmpModel devient :  "<<_models[2]<<endl;
 	_guards [2] = new Gardien (this, _models[2].c_str());
 	
-	_guards [2] -> _x = 90.; 
-	_guards [2] -> _y = 70.;
+	_guards [2] -> _x = 20.; 
+	_guards [2] -> _y = 700.;
 	
 	_models[3]="Serpent";
 	//strcpy(tmpModel,_models[3].c_str());
 
 	_guards [3] = new Gardien (this, _models[3].c_str());
-	_guards [3] -> _x = 60.; 
-	_guards [3] -> _y = 10.;
+	_guards [3] -> _x = 80.; 
+	_guards [3] -> _y = 460.;
 	
 
 
@@ -386,8 +389,8 @@ BoxBlocker() ;
 	//strcpy(tmpModel,_models[4].c_str());
 
 	_guards [4] = new Gardien (this, _models[4].c_str()); 
-	_guards [4] -> _x = 130.;
-	_guards [4] -> _y = 100.;
+	_guards [4] -> _x = 580.;
+	_guards [4] -> _y = 850.;
 	
 	
 	
@@ -395,8 +398,8 @@ BoxBlocker() ;
 	//strcpy(tmpModel,_models[5].c_str());
 
 	_guards [5] = new Gardien (this,_models[5].c_str() );
-	_guards [5] -> _x = 170.;
-	_guards [5] -> _y = 140.;
+	_guards [5] -> _x = 470.;
+	_guards [5] -> _y = 900.;
 	
 
 
@@ -407,15 +410,15 @@ BoxBlocker() ;
 	//strcpy(tmpModel,_models[6].c_str());
 
 	_guards [6] = new Gardien (this,_models[6].c_str() ); 
-	_guards [6] -> _x = 190.; 
-	_guards [6] -> _y = 160.;
+	_guards [6] -> _x = 340.; 
+	_guards [6] -> _y = 800.;
 	
 	_models[7]="garde";
 	//strcpy(tmpModel,_models[7].c_str());
 
 	_guards [7] = new Gardien (this, _models[7].c_str());
-	_guards [7] -> _x = 210.;
-	_guards [7] -> _y = 180.;
+	_guards [7] -> _x = 170.;
+	_guards [7] -> _y = 910.;
 	// indiquer qu'on ne marche pas sur les gardiens.
 	_data [(int)(_guards [1] -> _x / scale)][(int)(_guards [1] -> _y / scale)] = 1;
 	_data [(int)(_guards [2] -> _x / scale)][(int)(_guards [2] -> _y / scale)] = 1;

@@ -664,7 +664,6 @@ thistodolistfile
 <done>
 ----------------------------------------------------------
 
-<current step> 
 
 step *** 
 
@@ -778,7 +777,7 @@ commit Labyrinthe.cc Labyrinthe.h todloist.bat
 
 |waiting for commit|
 
-<doing> 
+(done) 
 ----------------------------------------------------------
 step 1.12112
 
@@ -883,22 +882,6 @@ Labyrinthe Counters : [1,MapSize-1]
 <Done> 
 
 --------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---------------------------------------------------------
-
 step2.0 : 
 bennessba lel boxes(caisses & marques),(wall & affiche) 
 they share the same coordinates system , 
@@ -923,7 +906,94 @@ lzmna , ntstiw using el Hunter (chasseur)
 
 
 
+<done>
 
+
+
+--------------------------------------------------------
+
+
+<current step> 
+
+
+
+made the game go faster 
+through removing cout on the labyrinthe.h ; 
+
+- 
+manually implemented characters in labyrinthe.cc 
+- 
+improved bot movment with rotation ! 
+-
+made a rotation function , 
+that takes as variables dx,dy,Rx,Ry ; 
+Rxy is basically RoatedXY
+dxy isn't the dxy used on move 
+its a parameter passed , 
+
+first roatation : Rxy + dxy 
+
+inside function 
+
+if(1st rotation == Empty )
+{
+  _xy=Rxy ;  
+}
+
+function gets local dxy as dxy ; 
+
+"-----------"
+
+for 2nd rotation : Rxy +dxy/10 
+function gets local dxy as dxy/10 ; 
+"-----------"
+for 3rd rotation : Rxy+distXY 
+function gets local dxy as distXY ; 
+
+
+
+
+
+
+-
+
+-
+
+
+
+
+commit
+guardian.cc labyrinthe.cc labyrinthe.hh 
+youssef_todolist ! guardian.h
+"uncomplete_Merge;Fixing_Bot_Movement;Faster_Game"
+
+|waiting for commit| 
+<doing>
+--------------------------------------------------------
+
+step 
+
+include chasseur.cc 
+& probably chasseur.h
+
+
+--------------------------------------------------------
+
+step 
+
+Treasure ::: win 
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------
 
 /*
 _______________________________ Absurdities _______________________________  
