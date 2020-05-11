@@ -93,70 +93,66 @@ void Gardien::fire (int angle_vertical)
 
 }*/
 //int i = 1;
-bool Gardien::move (double dx, double dy)
+bool Gardien::move_patrouille (double dx, double dy)
 {
 
 int angle=this->_angle; 
 
-	//cout<<"misec.count () ="<< misec.count ()<<endl;
-	//cout <<"_x ="<<_x<<"_y ="<<_y<<"   _y  /  scale ="<<(int)((_y + dy ) / Environnement::scale) <<endl;
-	if (EMPTY == _l -> data ((int)((_x + dx) / Environnement::scale),
-							 (int)((_y + dy ) / Environnement::scale)))
-	{
-		//angle = (angle ) * (PI/180); // Convert to radians
-		//float centerX= (LAB_WIDTH-1)*10/2;  
-		//float centerY=(LAB_HEIGHT-1)*10/2;
-		//float rotatedX = cos(angle) * (_x - centerX) - sin(angle) * (_y-centerY) + centerX;
-		//float rotatedY = sin(angle) * (_x - centerX) + cos(angle) * (_y-centerY) + centerY;
+/*rotatedX = ((x - x_origin)*cos(angle))-((y_origin - y)*sin(angle))+x_origin
+  rotatedY = ((y_origin - y)*cos(angle))-((x - x_origin)*sin(angle))+y_origin
+*/
+float distX=dx/100; 
+float distY=dy/100;
+float rotatedX = _x + cos(angle* PI/180)*distX - sin(angle* PI/180)*distY;
+float rotatedY = _y + cos(angle* PI/180)*distX - sin(angle* PI/180)*distY;
 
-			_x += dx/100;  // Reglage de la vitesse dx par rapport à l'echelle
-			_y += dy/100;  // Reglage de la vitesse dy par rapport à l'echelle
-		//message ("Move OK ....._x= %d _y=%d  , _x + dx = %d", (int)_x, (int)_y,(int)(_y + dy));
+//message("angle = %d ; X = %f, rotatedX =%f  , rotatedY = %f",_angle ,_x ,rotatedX,rotatedY); 	
+	if (EMPTY == _l -> data ((int)((rotatedX + dx) / Environnement::scale),
+							 (int)((rotatedY + dy ) / Environnement::scale)))
+	{
+		//message("Guards walk... withou blocking.. no WALL .......");
+		//if ()
+
+		_x = rotatedX ;  // Mise à jour de la valeur de x
+		_y = rotatedY ;  // Mise à jour de la valeur de y
+		//_L->_data [(int)(_x / Environnement::scale)][(int)(_y / Environnement::scale)] = 1;
 		return true;
 	}
-		else
-	{		// Le gardien se trouve devant un Objet ou un Mur.. Il doit changer de direction !!
+		else  /// Le gardien se trouve devant un Objet ou un Mur.. Il doit changer de direction !!
+	{		
+		message("WALL ....... !!");
+		int  angle_Rand = ( rand() % 360 ) + 1 ; // Génèration d'un angle alèatoire 
+		_angle += angle_Rand ;
+		_x = rotatedX ;  // Mise à jour de la valeur de x
+		_y = rotatedY ;  // Mise à jour de la valeur de y
 
-		float value= (dx+dy)/2;
-		
-		angle+=value;
-		if(angle>360)
-		angle=0; 
-
-		message("angle = %d",angle);
-		this->_angle =angle; 
-		//this->_angle +=  value;
-		return false;
+		return true;
 	}
 
 	return false;
 	
 }
 
-
-/*
- *	Tente un deplacement.
- */
-
-/*bool Gardien::move_aux (double dx, double dy)
+bool Gardien::move_defence (double dx, double dy)
+{}
+bool Gardien::move (double dx, double dy)
 {
-	if (EMPTY == _l -> data ((int)((_x + dx) / Environnement::scale),
-							 (int)((_y + dy) / Environnement::scale)))
-	{
-		return true;
-	}
-
-	return false;
 	
-}*/
+	return move_patrouille(dx,dy);
+	
+	//return move_defence(dx,dy);
+	//return true;
+}
+
+
 
 	/* Le gardien Pense */
 void Gardien::update (void)
 {
-	double x=10, y=10; // Constante  réglage vitesse 
+	double x=15, y=15; // x et y sont le pas de dépassement du gardien 
 	//message ("Wall.. x= %d , y=%d",x,y);
-
 	move(x,y); //Le gardien Marche
+	//fire(1);
 
 }
 	

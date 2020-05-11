@@ -61,31 +61,35 @@ bool Chasseur::process_fireball (float dx, float dy)
 	}
 		
 		
-		/// collision... croissement des coordonnées(x,y) du Fireball & coordonnées du gardien (x,y) 
+		/// Guardien Touché par ball ...c'est à dire il y'a  croissement des coordonnées(x,y) du Fireball & coordonnées du gardien (x,y) 
 	//_l->data() = 1 cad  on vient de pércuter un obstacle
 
 	if ( (  ( (int)(_l -> _guards [1] -> _x / Environnement::scale) == (int)(_fb -> get_x () + dx)/ Environnement::scale ) ) && ( ((int)(_l -> _guards [1] -> _y/ Environnement::scale )) == ( (int) ( (_fb -> get_y () + dy)/ Environnement::scale ) ) ) )
 	{
 		message ( "  Gardien 1 touché Position Gardien = %d,  Position Fireball = %d, dx =%d  ",(int)(_l -> _guards [2] ->_x )/ Environnement::scale ,(int)(_fb -> get_x () +dx) / Environnement::scale);
-			//-HP for gards
+		//int G_HP -= 30;
+		//-HP for gards
 	}
 
 	if ( (  ( (int)(_l -> _guards [2] -> _x / Environnement::scale) == (int)(_fb -> get_x () + dx)/ Environnement::scale ) ) && ( ((int)(_l -> _guards [2] -> _y/ Environnement::scale )) == ( (int) ( (_fb -> get_y () + dy)/ Environnement::scale ) ) ) )
 	{
 		message ( "  Gardien 2 touché Position Gardien = %d,  Position Fireball = %d, dx =%d  ",(int)(_l -> _guards [2] ->_x )/ Environnement::scale ,(int)(_fb -> get_x () +dx) / Environnement::scale);
-			//-HP for gards
+		//_l -> _guards [2]-> G_HP -= 30;
+		//-HP for gards
 	}
 
 	if ( (  ( (int)(_l -> _guards [3] -> _x / Environnement::scale) == (int)(_fb -> get_x () + dx)/ Environnement::scale ) ) && ( ((int)(_l -> _guards [3] -> _y/ Environnement::scale )) == ( (int) ( (_fb -> get_y () + dy)/ Environnement::scale ) ) ) )
 	{
 		message ( "  Gardien 3 touché Position Gardien = %d,  Position Fireball = %d, dx =%d  ",(int)(_l -> _guards [2] ->_x )/ Environnement::scale ,(int)(_fb -> get_x () +dx) / Environnement::scale);
-			//-HP for gards
+		//_l -> _guards [3]-> G_HP -= 30;
+		//-HP for gards
 	}
 
 	if ( (  ( (int)(_l -> _guards [4] -> _x / Environnement::scale) == (int)(_fb -> get_x () + dx)/ Environnement::scale ) ) && ( ((int)(_l -> _guards [4] -> _y/ Environnement::scale )) == ( (int) ( (_fb -> get_y () + dy)/ Environnement::scale ) ) ) )
 	{
 		message ( "  Gardien 4 touché Position Gardien = %d,  Position Fireball = %d, dx =%d  ",(int)(_l -> _guards [2] ->_x )/ Environnement::scale ,(int)(_fb -> get_x () +dx) / Environnement::scale);
-			//-HP for gards
+		//_l -> _guards [4]-> G_HP -= 30;
+		//-HP for gards
 	}
 	// calculer la distance maximum en ligne droite.
 	float	dmax2 = (_l -> width ())*(_l -> width ()) + (_l -> height ())*(_l -> height ());
@@ -109,17 +113,7 @@ void Chasseur::fire (int angle_vertical)
 	
 		//message ( "  angle_vertical =%d, _angle=%d", angle_vertical, _angle);
 
-
-
-	// message ("",_fb->get_x) 
-	/*if ( ( ( _fb->get_x()) == (_l -> _guards [2] -> _x ) )&& ( ( _fb->get_y()) == (_l -> _guards [2] -> _y ) ) )
-	{
-		std::cout<<"Blade Touched";
-		message ("Blade Touched");
-	}*/
-
 	//HP_Reg();
-	
 }
 
 

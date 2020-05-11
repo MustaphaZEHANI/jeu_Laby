@@ -2,10 +2,6 @@
 #define CHASSEUR_H
 
 #include <iostream>
-#include <Windows.h>
-#include <stdio.h>
-#include <thread>
-#include <chrono>
 #include "Mover.h"
 #include "Sound.h"
 #include "Labyrinthe.h"
