@@ -141,6 +141,7 @@ Labyrinthe::Labyrinthe (char* filename)
 
 	Fill_Map_data();
 
+	Fill_Treasure_Area();
 
 	
 	
@@ -287,11 +288,14 @@ BoxBlocker() ;
 	
 /* DEB - NOUVEAU */
 	// 2 marques au sol.
+	/*
 	static Box	marques [] = 
 	{
-		{ 50, 14, 0 },
-		{ 20, 15, 0 },
+ 		{ 50, 14, 0 },
+		{ 20, 15, 0 }, 
 	};//end of assignement 
+
+	*/
 	//marques est un tableau de Box ; 
 	//une caisse bloque les déplacements ; 
 	// par contre , une marque ne bloque pas les déplacements ; 
@@ -334,13 +338,19 @@ BoxBlocker() ;
 
 
 	// mettre les marques au sol.
-	sprintf (tmp, "%s/%s", texture_dir, "p1.gif");
+/* 	sprintf (tmp, "%s/%s", texture_dir, "p1.gif");
 	marques [0]._ntex = wall_texture (tmp);
 	sprintf (tmp, "%s/%s", texture_dir, "p3.gif");
-	marques [1]._ntex = wall_texture (tmp);
-	_nmarks = 2;
-	_marks = marques;
-/* FIN - NOUVEAU */
+	marques [1]._ntex = wall_texture (tmp); */
+	//_nmarks = 2;
+	
+	
+	
+	//_marks = marques;
+
+
+
+	/* FIN - NOUVEAU */
 
 	// le trésor.
 /* 
@@ -427,6 +437,16 @@ BoxBlocker() ;
 	_data [(int)(_guards [5] -> _x / scale)][(int)(_guards [5] -> _y / scale)] = 1;
 	_data [(int)(_guards [6] -> _x / scale)][(int)(_guards [6] -> _y / scale)] = 1;
 	_data [(int)(_guards [7] -> _x / scale)][(int)(_guards [7] -> _y / scale)] = 1;
+
+
+	int x=_Treasure_Area[0]._x; 
+	int y=_Treasure_Area[0]._y; 
+
+	int T_x=_treasor._x;
+	int T_y=_treasor._y;
+
+	cout << "le TreasureArea[0] possede comme position : ("<< x <<", "<< y <<") ";
+	cout << "le tresor se trouve a : ("<< T_x <<", "<< T_y <<") ";
 
 
 }//end of Labyrinthe !

@@ -10,6 +10,7 @@ using namespace std;
 
 #define EMPTY	0		// case vide (ou on peut marcher!)
 
+
 // affiche un message en haut � gauche de l'�cran.
 extern void message (const char* format, ...);
 
@@ -57,6 +58,7 @@ public:
 	int		_nmarks;	// leur nombre.
 /* FIN - NOUVEAU */
 
+	
 	Box		_treasor;	// le tr�sor.
 	Mover**	_guards;	// les gardes (tableau de pointeurs de gardiens).
 	int		_nguards;	// leur nombre.
@@ -76,7 +78,9 @@ public:
 
 	//my own variables ! 
 	string* _models;
+	int _N_Treasure_Area= 25;
 	
+	Box* _Treasure_Area; 
 };
 
 #endif

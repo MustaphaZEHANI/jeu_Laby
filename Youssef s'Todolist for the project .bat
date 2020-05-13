@@ -913,7 +913,6 @@ lzmna , ntstiw using el Hunter (chasseur)
 --------------------------------------------------------
 
 
-<current step> 
 
 
 
@@ -968,20 +967,98 @@ youssef_todolist ! guardian.h
 "uncomplete_Merge;Fixing_Bot_Movement;Faster_Game"
 
 |waiting for commit| 
-<doing>
+<done>
 --------------------------------------------------------
+<current step> 
+
+
+merged everything 
+
+<done > 
 
 step 
 
+
+
+trying to fix rotation ! 
+
+"Rotation fixed"
+<done>
+
+-
 include chasseur.cc 
 & probably chasseur.h
+"merge them"
 
 
---------------------------------------------------------
+<done> 
+-
+*fix counter for Tp + variables for TreasureArea !
 
+
+
+make tp with marks for Treasure 
+
+"Use Random_models for each mark ! "
+
+<done> 
+
+implementing all models for marks 
+
+<done> 
+
+
+
+
+-
 step 
 
 Treasure ::: win 
+-
+created global variables 
+on environement.h 
+
+created a function 
+to fill treasure Area on labyrinthe.h 
+
+testing the fill trasure function !  
+
+fill treasure works great 
+
+-
+
+
+<done>
+
+----------------
+
+*implement guardian fireball 
+
+> bullets bug & can crash the game 
+cause they go as infinite ! 
+<delayed> 
+
+
+commit 
+"fixed rotation+TpH+marks+merged project"
+
+chasseur.cc
+
+chasseur.h 
+
+Environement.h 
+guardian.cc 
+guardian.h 
+youssef_todolist
+
+
+
+
+
+
+|only commit when you finish the work| 
+<doing  > 
+--------------------------------------------------------
 
 
 
@@ -994,6 +1071,49 @@ Treasure ::: win
 
 
 --------------------------------------------------------
+
+
+
+
+
+
+
+--------------------------------------------------------
+
+making marks being displayed as a diagonal 
+
+ij [-2,2]
+
+-
+i [-2,2]
+k []
+
+counter ;
+markIndex ;  
+marque[markIndex]._ntex=T[TextureIndex] ; 
+
+
+index:0 => i:-2
+k[same as ij]
+
+markIndex=(i+j)
+
+marque[]._ntex=T[markindex]
+
+  xoeiz 
+  oeiza 
+  eizak 
+  izakl
+  zakls
+
+
+
+
+<to do> 
+
+
+
+
 
 /*
 _______________________________ Absurdities _______________________________  

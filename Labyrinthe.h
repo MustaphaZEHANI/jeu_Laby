@@ -611,6 +611,7 @@ public:
 				_treasor._y = y;
 				_Data [x][y] = 1;
 				cout << "le tresor se trouve a : ( "<< x <<" , "<< y <<" ) ";
+				
 				//partie gagné	
 				}
 				
@@ -661,7 +662,6 @@ public:
 	_picts = affiche;
 	cout << "congrats you just turned a 2d text into 3D !\n";
 	cout << "_________________End of Final Function_________________\n"; 
-
 	;}//end of from2D_MapMatrixto3D_Map
 	
 	void Fill_Map_data()
@@ -678,6 +678,69 @@ public:
 		}//end for x 
 
 	}//end of function
+
+	void Fill_Treasure_Area()
+	{
+	int counter=0 ; 
+	int x=_treasor._x;
+	int y=_treasor._y;
+	
+	string Texture[6]={"p3.gif",
+	"p1.gif",
+	"p2.jpg","p4.gif"};
+	_Treasure_Area=new Box[_N_Treasure_Area];
+	
+	Box	*marques =new Box[_N_Treasure_Area];
+	
+	Box *VictoryPoint=new Box[_N_Treasure_Area];
+
+	int TextureIndex;
+	
+		for(int i=-2;i<3;i++)
+		{
+			
+			
+			
+			
+			
+			for(int j=-2;j<3;j++)
+			{
+			char	tmp [128]="";
+			TextureIndex=i+2;
+			
+			if (TextureIndex>3)
+			TextureIndex-=rand()%4+1;
+			
+			//equals markIndex=rand()%4
+			cout << "TextureIndex from [0,to 4] = "<<TextureIndex;
+			
+			VictoryPoint[counter]._x=x+i;	
+			
+			VictoryPoint[counter]._y=y+j; 	
+			
+			marques[counter]._x=x+i;
+			marques[counter]._y=y+j;
+
+			char chosenTexture[128];
+			strcpy(chosenTexture,Texture[TextureIndex].c_str());
+			cout <<"  ; chosenTexture : "<<chosenTexture<<endl;
+			
+			sprintf ( tmp, "%s/%s", texture_dir,chosenTexture );
+			marques [counter]._ntex = wall_texture (tmp);
+
+			++counter ; 
+			
+			}//end for j
+
+		
+		
+		}//end for i 
+
+		_Treasure_Area=VictoryPoint  ; 
+		_nmarks=_N_Treasure_Area;
+		_marks = marques;
+
+	}//end of function ! 
 
 
 };//end of class Labyrinthe
