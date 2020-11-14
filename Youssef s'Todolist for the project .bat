@@ -969,7 +969,6 @@ youssef_todolist ! guardian.h
 |waiting for commit| 
 <done>
 --------------------------------------------------------
-<current step> 
 
 
 merged everything 
@@ -1050,16 +1049,21 @@ Environement.h
 guardian.cc 
 guardian.h 
 youssef_todolist
-
+Labyrinthe.h 
+Labyrinthe.cc
 
 
 
 
 
 |only commit when you finish the work| 
-<doing  > 
+<done   > 
 --------------------------------------------------------
 
+<current step> 
+
+check the precedent step s'anterior tasks & 
+do them in here & thanks :) 
 
 
 
@@ -1388,19 +1392,19 @@ ____________Voici la matrice du Map____________
 41   ]|                         ||                                                   +--------+  |
 42   ]|        G                ||                                                               |
 43   ]+--------------a----------++--------a-a-------------------------------------------------+  |
-44   ]                                                                                        |  |
-45   ]                                                                                        |  |
-46   ]                                                                                        |  |
-47   ]                                                                                        |  |
-48   ]                                                                                        |  |
-49   ]                                                                                        |  |
-50   ]                                                                                        |  |
-51   ]                                                                                        |  |
-52   ]                                                                                        |  |
-53   ]                                                                                        |  |
-54   ]                                                                                        |  |
-55   ]                                                                                        |  |
-56   ]                                                                              +---------+  |
+44   ]                                                                                        |- |
+45   ]                                                                                        | -|
+46   ]                                                                                        |- |
+47   ]                                                                                        | -|
+48   ]                                                                                        |- |
+49   ]                                                                                        | -|
+50   ]                                                                                        |- |
+51   ]                                                                                        | -|
+52   ]                                                                                        |- |
+53   ]                                                                                        | -|
+54   ]                                                                                        |- |
+55   ]                                                                                        | -|
+56   ]                                                                              +---------+- |
 57   ]                                                                              |            |
 58   ]                                                                              +            |
 59   ]                                                                                  T        |

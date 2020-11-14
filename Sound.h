@@ -1,3 +1,4 @@
+
 #ifndef SOUND_H
 #define SOUND_H
 
@@ -26,7 +27,10 @@ private:
 	void init (void);
 public:
 	Sound (const char*);							// charge un fichier de sons.
-	~Sound ();										// libère les échantillons.
-	void play (float volume =1., float pan =0.);	// le fait jouer.
-};
+	~Sound ();										// libï¿½re les ï¿½chantillons.
+	void play (float volume =0.1, float pan =0.);	// le fait jouer.
+	
+
+};//end of class
 #endif
+

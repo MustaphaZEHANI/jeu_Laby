@@ -364,6 +364,7 @@ BoxBlocker() ;
 	_guards = new Mover* [_nguards];
 	_models=new string[_nguards] ;
 	_guards [0] = new Chasseur (this);
+	//_guards [0]->_y=810; //for debug purposes
 	_models[0]="";
 	//hunter got no model / Hunter.model = 0 ;
 	//char tmpModel[9];
