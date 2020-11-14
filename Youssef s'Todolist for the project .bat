@@ -1064,15 +1064,75 @@ Labyrinthe.cc
 
 check the precedent step s'anterior tasks & 
 do them in here & thanks :) 
+"delayed"
+
+
+
+do marks as : 
+azezf
+zezfx
+ezfxb
+zfxbr
+fxbrc
+
+12345
+23456
+34567
+45678
+56789
+
+
+
+//""  : 10 
+9
+this means 9 textures 
+
+5x5 
+
+
+"to do"
+
+
+fix labyrinthe maybe 
+"to do"
+
+
+commit "Added & fixed new Textures + their placement"
+
+:branch: 
+AlphaReleases
+
+:text: 
+using photoshop made all the textures as gif with alpha mode 
+
+added new textures edited with ps 
+
+made the algorithm to show all the 9 textures 
+
+preparing for the diagonal print of the textures 
+
+:files: 
+
+Youssef_to_do_list.bat 
+Textures //"folder"
+Labyrinthe.h 
 
 
 
 
 
 
+commit "added Test _ Field folder for testing ,1st Alpha test worked"
+
+:text:
+game tested using the Test Field folder & it works ! 
+
+:files:
+Youssef_to_do_list.bat
+Test_Field //"folder"
 
 
-
+::doing::
 
 --------------------------------------------------------
 

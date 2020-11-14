@@ -685,9 +685,12 @@ public:
 	int x=_treasor._x;
 	int y=_treasor._y;
 	
-	string Texture[6]={"p3.gif",
+	string Texture[10]={"p3.gif",
 	"p1.gif",
-	"p2.jpg","p4.gif"};
+	"p2.gif","p4.gif",	"5.gif" ,
+	"6.gif" ,"7.gif","8.gif","9.gif"
+}; 
+	 
 	_Treasure_Area=new Box[_N_Treasure_Area];
 	
 	Box	*marques =new Box[_N_Treasure_Area];
@@ -706,13 +709,13 @@ public:
 			for(int j=-2;j<3;j++)
 			{
 			char	tmp [128]="";
-			TextureIndex=i+2;
+			//TextureIndex=i+2;
+			TextureIndex =rand()%9;//[0..8]
+			if (i+2==4) //last_Line
+			TextureIndex=4+rand()%5;//random(fromZeroToFour) = [0..8]
 			
-			if (TextureIndex>3)
-			TextureIndex-=rand()%4+1;
-			
-			//equals markIndex=rand()%4
-			cout << "TextureIndex from [0,to 4] = "<<TextureIndex;
+			//equals markIndex="[one from the last 4]" from [4 , to 8]
+			cout << "TextureIndex from [0,to 8] = "<<TextureIndex;
 			
 			VictoryPoint[counter]._x=x+i;	
 			
@@ -730,6 +733,8 @@ public:
 
 			++counter ; 
 			
+			cout <<" rand()%3 = " << rand()%3<<endl ;
+
 			}//end for j
 
 		
