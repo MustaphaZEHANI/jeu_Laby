@@ -681,15 +681,22 @@ public:
 
 	void Fill_Treasure_Area()
 	{
-	int counter=0 ; 
+	
+	cout << "Inside The Diagonal Mark Function ( w ^_^)"<<endl;
+	
+	int AreaCounter=0;
+	
+	
 	int x=_treasor._x;
 	int y=_treasor._y;
 	
-	string Texture[10]={"p3.gif",
-	"p1.gif",
-	"p2.gif","p4.gif",	"5.gif" ,
-	"6.gif" ,"7.gif","8.gif","9.gif"
-}; 
+	string Texture[10]=
+		{
+		"p3.gif",
+		"p1.gif",
+		"p2.gif","p4.gif",	"5.gif" ,
+		"6.gif" ,"7.gif","8.gif","9.gif"
+		}; 
 	 
 	_Treasure_Area=new Box[_N_Treasure_Area];
 	
@@ -698,7 +705,7 @@ public:
 	Box *VictoryPoint=new Box[_N_Treasure_Area];
 
 	int TextureIndex;
-	
+	/* 
 		for(int i=-2;i<3;i++)
 		{
 			
@@ -717,21 +724,21 @@ public:
 			//equals markIndex="[one from the last 4]" from [4 , to 8]
 			cout << "TextureIndex from [0,to 8] = "<<TextureIndex;
 			
-			VictoryPoint[counter]._x=x+i;	
+			VictoryPoint[AreaCounter]._x=x+i;	
 			
-			VictoryPoint[counter]._y=y+j; 	
+			VictoryPoint[AreaCounter]._y=y+j; 	
 			
-			marques[counter]._x=x+i;
-			marques[counter]._y=y+j;
+			marques[AreaCounter]._x=x+i;
+			marques[AreaCounter]._y=y+j;
 
 			char chosenTexture[128];
 			strcpy(chosenTexture,Texture[TextureIndex].c_str());
 			cout <<"  ; chosenTexture : "<<chosenTexture<<endl;
 			
 			sprintf ( tmp, "%s/%s", texture_dir,chosenTexture );
-			marques [counter]._ntex = wall_texture (tmp);
+			marques [AreaCounter]._ntex = wall_texture (tmp);
 
-			++counter ; 
+			++AreaCounter ; 
 			
 			cout <<" rand()%3 = " << rand()%3<<endl ;
 
@@ -740,10 +747,119 @@ public:
 		
 		
 		}//end for i 
+	 */
+	//AreaCounter=0;
+	int startX=x-2;
+	int endX=x+2; 
+	int startY=y-2;
+	int endY=y+2; 
+	int counter=0;
+	cout << "diagonal n( " << counter+1<<" ) : has 1 element" <<endl;
+	
+	VictoryPoint[AreaCounter]._x=startX;	
+			
+	VictoryPoint[AreaCounter]._y=startY; 	
+			
+	marques[AreaCounter]._x=startX;
+	marques[AreaCounter]._y=startY;
+	
+	char chosenTexture[128];
+	char	tmp [128]="";
+	strcpy(chosenTexture,Texture[counter].c_str());
+	
+	cout <<"  ; chosenTexture : "<<chosenTexture<<endl;
+			
+	sprintf ( tmp, "%s/%s", texture_dir,chosenTexture );
+	marques [AreaCounter]._ntex = wall_texture (tmp);
 
-		_Treasure_Area=VictoryPoint  ; 
-		_nmarks=_N_Treasure_Area;
-		_marks = marques;
+
+	//M[startX][startY]=T[counter];
+	//it happens above ! 
+	AreaCounter++;
+	
+		do
+		{
+		counter++;
+		cout << "\ndiagonal "<<counter+1<<endl; 
+		int count=0;
+		int temp;
+		int stepX,stepY;
+			if(counter<=4)//does the 5 diagonals
+			{
+			stepX=startX+counter;
+			stepY=startY;
+			temp=counter;
+			} 
+			else
+			{//does the last 4 diagonals
+			stepX=endX;
+			stepY=(startY-1)+counter+1-4;
+			temp=5-(counter-5)-2 ; 
+
+			}//end of if counter!=4
+		int step;
+			for(step=0;step<=temp;step++)
+			{
+			count++;
+
+			//M[stepX][stepY]=T[counter];
+			VictoryPoint[AreaCounter]._x=stepX;	
+			
+			VictoryPoint[AreaCounter]._y=stepY; 	
+					
+			marques[AreaCounter]._x=stepX;
+			marques[AreaCounter]._y=stepY;
+			
+			char chosenTexture[128];
+			char	tmp [128]="";
+			strcpy(chosenTexture,Texture[counter].c_str());
+			
+			cout <<"  ; chosenTexture : "<<chosenTexture<<endl;
+					
+			sprintf ( tmp, "%s/%s", texture_dir,chosenTexture );
+			marques [AreaCounter]._ntex = wall_texture (tmp);
+
+
+
+			AreaCounter++;
+			stepY+=1; 
+			stepX-=1;
+			
+			/*
+			12345
+			23456
+			34567
+			4567
+			567
+			*/
+			}//end of for
+		string elementString="element" ;
+		
+		
+		
+			if(count!=1)
+			{
+			
+			elementString+="s";
+			}
+		
+		cout << "diagonal n( " << counter+1<<" ) : has " ;        
+		cout << count <<" "<< elementString << "\n" <<endl;
+		
+			
+		
+		} 
+		while (counter!=8); //does the 9 diagonals
+
+    cout << "\n The matrix has "<<AreaCounter<< " elements in Total"<<endl;
+
+
+
+
+
+	_Treasure_Area=VictoryPoint  ; 
+	_nmarks=_N_Treasure_Area;
+	_marks = marques;
 
 	}//end of function ! 
 

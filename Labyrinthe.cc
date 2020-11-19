@@ -364,7 +364,10 @@ BoxBlocker() ;
 	_guards = new Mover* [_nguards];
 	_models=new string[_nguards] ;
 	_guards [0] = new Chasseur (this);
+	
 	//_guards [0]->_y=810; //for debug purposes
+	//_guards [0]->_x=810; //for debug purposes
+
 	_models[0]="";
 	//hunter got no model / Hunter.model = 0 ;
 	//char tmpModel[9];
@@ -428,8 +431,8 @@ BoxBlocker() ;
 	//strcpy(tmpModel,_models[7].c_str());
 
 	_guards [7] = new Gardien (this, _models[7].c_str());
-	_guards [7] -> _x = 170.;
-	_guards [7] -> _y = 910.;
+	//_guards [7] -> _x = 170.;
+	//_guards [7] -> _y = 910.;
 	// indiquer qu'on ne marche pas sur les gardiens.
 	_data [(int)(_guards [1] -> _x / scale)][(int)(_guards [1] -> _y / scale)] = 1;
 	_data [(int)(_guards [2] -> _x / scale)][(int)(_guards [2] -> _y / scale)] = 1;

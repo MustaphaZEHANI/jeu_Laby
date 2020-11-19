@@ -1060,6 +1060,32 @@ Labyrinthe.cc
 <done   > 
 --------------------------------------------------------
 
+
+
+commit "Added & fixed new Textures + their placement"
+
+:branch: 
+AlphaReleases
+
+:text: 
+using photoshop made all the textures as gif with alpha mode 
+
+added new textures edited with ps 
+
+made the algorithm to show all the 9 textures 
+
+preparing for the diagonal print of the textures 
+
+:files: 
+
+Youssef_to_do_list.bat 
+Textures //"folder"
+Labyrinthe.h 
+
+
+
+::done::
+---------------------------------------------------------
 <current step> 
 
 check the precedent step s'anterior tasks & 
@@ -1090,48 +1116,35 @@ this means 9 textures
 5x5 
 
 
-"to do"
+"doing"
 
 
 fix labyrinthe maybe 
 "to do"
 
 
-commit "Added & fixed new Textures + their placement"
-
-:branch: 
-AlphaReleases
-
-:text: 
-using photoshop made all the textures as gif with alpha mode 
-
-added new textures edited with ps 
-
-made the algorithm to show all the 9 textures 
-
-preparing for the diagonal print of the textures 
-
-:files: 
-
-Youssef_to_do_list.bat 
-Textures //"folder"
-Labyrinthe.h 
 
 
 
 
 
 
-commit "added Test _ Field folder for testing ,1st Alpha test worked"
+
+commit "added Test _ Field+ hunterTPs+ +added 9 diagonal marks display"
 
 :text:
 game tested using the Test Field folder & it works ! 
-
+now it's possible to view the marks in the 9 diagonals form ! 
+holding a cool display format 
+improved Teleportation for testing 
+contrl right click + shit right click 
 :files:
 Youssef_to_do_list.bat
 Test_Field //"folder"
-
-
+Labyrinthe.h
+chasseur.cc 
+Labyrinthe.cc
+Readme.md
 ::doing::
 
 --------------------------------------------------------
@@ -1221,7 +1234,66 @@ ____________________________ End of Absurdities ____________________________
             +++++++++++++++++++++++++++++++++++++++++++++++++++++      
 _____________                     Game Log                      _____________
             +++++++++++++++++++++++++++++++++++++++++++++++++++++      
-le gardien n(1)[Lezard] se trouve a la position (12 , 8 )
+PS C:\Users\Riados\Documents\cstrike game c++ project\Test_Field> cd "c:\Users\Riados\Documents\cstrike game c++ project\Test_Field"
+PS C:\Users\Riados\Documents\cstrike game c++ project\Test_Field> & .\"test.exe" 
+program starts
+____________Voici la matrice du Map____________
+01   ]
+02   ]
+03   ]
+04   ]
+05   ]
+____________Fin de la matrice____________
+Inside The main Function ( w ^_^)
+____________Voici la matrice du Map____________
+01   ]☻♦♣
+02   ]♥♥♠
+03   ]☺♥
+04   ]♦☺☺☺
+05   ☻♥♥
+____________Fin de la matrice____________
+Hello World
+PS C:\Users\Riados\Documents\cstrike game c++ project\Test_Field> cd "c:\Users\Riados\Documents\cstrike game c++ project\Test_Field"
+PS C:\Users\Riados\Documents\cstrike game c++ project\Test_Field> & .\"test.exe" 
+program starts
+____________Voici la matrice du Map____________
+01   ]
+02   ]     
+03   ]
+04   ]
+05   ]
+____________Fin de la matrice____________
+Inside The main Function ( w ^_^)
+____________Voici la matrice du Map____________
+01   ]75361
+02   ]42802
+03   ]21171
+04   ]88242
+05   ]25237
+____________Fin de la matrice____________
+Hello World
+PS C:\Users\Riados\Documents\cstrike game c++ project\Test_Field>
+PS C:\Users\Riados\Documents\cstrike game c++ project\Test_Field> cd "c:\Users\Riados\Documents\cstrike game c++ project\Test_Field"
+PS C:\Users\Riados\Documents\cstrike game c++ project\Test_Field> & .\"test.exe" 
+program starts
+____________Voici la matrice du Map____________
+01   ]
+02   ]
+03   ]
+04   ]
+05   ]
+____________Fin de la matrice____________      
+Inside The main Function ( w ^_^)
+____________Voici la matrice du Map____________
+01   ]00000
+02   ]00000
+03   ]00000
+04   ]00000
+05   ]00000
+____________Fin de la matrice____________
+Hello World
+PS C:\Users\Riados\Documents\cstrike game c++ project\Test_Field>
+PS C:\Users\Riados\Documents\cstrike game c++ project\Test_Field>  le gardien n(1)[Lezard] se trouve a la position (12 , 8 )
 le chasseur se trouve a la position : ( 79 , 87 ) ; reellement : ( 790.458 , 873.747 )
 le gardien n(1)[Lezard] se trouve a la position (12 , 8 )
 le chasseur se trouve a la position : ( 79 , 86 ) ; reellement : ( 797.167 , 869.39 )

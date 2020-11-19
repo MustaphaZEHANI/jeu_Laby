@@ -195,13 +195,22 @@ void Chasseur::fire (int angle_vertical)
 void Chasseur::right_click (bool shift, bool control)
 {
 	if (shift)
-		_l -> _guards [1] -> rester_au_sol ();
+	{
+	_l -> _guards [1] -> rester_au_sol ();
+	_x=810;
+	_y=810;
+	}
+	else if (control) 
+	{
+	_x=100;
+	_y=810;	
+	}
 	else
-		{
-		_x=470 ;
-		_y= 910;
-		_l -> _guards [1] -> tomber ();
-		}//end if 
+	{
+	_x=470 ;
+	_y= 910;
+	_l -> _guards [1] -> tomber ();
+	}//end if 
 }
 
 
